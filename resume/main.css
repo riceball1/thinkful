@@ -5,12 +5,41 @@ body {
 main {
     border: 2px solid lightgray;
     padding: 15px;
+    width: 600px;
+    position: absolute;
 }
 
 img {
-    width: 125px;
     height: 200px;
+    width: 160px;
     margin: 15px;
-    right: 15px;
+    right: 10px;
     position: absolute;
+}
+
+@media (min-width: 600px) {
+    main {
+        width: 600px;
+    }
+    img {
+        right: 10px;
+    }
+}
+
+@media (min-width: 700px) {
+    main {
+        width: 800px;
+    }
+    img {
+        right: 15px;
+    }
+}
+
+@media (min-width: 900px) {
+    main {
+        width: 900px;
+    }
+    img {
+        right: 20px;
+    }
 }
