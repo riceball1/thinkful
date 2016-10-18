@@ -1,0 +1,94 @@
+/*** GENERAL ***/
+
+body {
+	margin: 0;
+	font-family: Arial, sans-serif;
+}
+
+
+/*** NAV ***/
+nav {
+	position: relative;
+	background-color: lightgray;
+	height: 50px;
+	width: 100%;
+	padding: 0px 10px 0px 10px;
+	text-align: left;
+	margin-bottom: 60px;
+	font-size: 20px;
+}
+
+ul {
+	list-style-type: none;
+	display: inline;
+	float: right;
+	padding: 0px 10px;
+}
+
+nav li {
+	display: inline;
+	float: left;
+}
+
+a {
+	text-decoration: none;
+	padding: 10px;
+}
+
+a:link {
+	color: purple;
+}
+
+.navbar-brand {
+	float: left;
+}
+
+/*** MAIN ****/
+
+input {
+	width: 500px;
+	height: 40px;
+	padding: 5px 10px;
+	margin: 0px 5px 0px 100px;
+	/*box-sizing: border-box;*/
+	font-size: 20px;
+	font-weight: bold;
+	color: #A9A9A9;
+	background-color: transparent;
+	border: 1px solid lightgray;
+	border-radius: 5px;
+	float: left;
+}
+
+
+.glass {
+	height: 38px;
+	border: 1px solid lightgray;
+	border-radius: 5px;
+	float: left;
+}
+
+
+.pagination {
+	display: inline-block;
+	padding: 0;
+	margin-left: 100px;
+	margin-top: 30px;
+	font-size: 0;
+	float: left;
+	clear: left;
+}
+
+ul.pagination li { 
+	display: inline; 
+	font-size: 15px;
+}
+
+ul.pagination li a {
+	color: black;
+	/*clear: left;*/
+	float: left;
+	text-decoration: none;
+	border: 1px solid #ddd;
+	padding: 8px 16px;
+}
