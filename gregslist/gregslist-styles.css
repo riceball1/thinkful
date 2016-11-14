@@ -8,11 +8,11 @@ body {
 
 /*** NAV ***/
 nav {
-	// position: relative;
+	/* position: relative; */
 	background-color: #ddd;
 	height: 50px;
 	width: 100%;
-	// top/bottom and left/right same
+	/* top/bottom and left/right same */
 	padding: 5px 10px 5px 10px;
 	text-align: left;
 	margin-bottom: 60px;
@@ -50,7 +50,7 @@ input {
 	width: 500px;
 	height: 40px;
 	padding: 5px 10px;
-	// margin: 0px 5px 0px 100px;
+	/* margin: 0px 5px 0px 100px; */
 	/*box-sizing: border-box;*/
 	font-size: 20px;
 	font-weight: bold;
@@ -73,10 +73,10 @@ input {
 ul.pagination {
 	display: inline-block;
 	padding: 0;
-	// same margin on top and bottom
-	// same on right
+	/* same margin on top and bottom
+	same on right */
 	margin: 30px 0px;
-	// margin-left: 100px;
+	/* margin-left: 100px; */
 	font-size: 0;
 	float: left;
 	clear: left;
@@ -105,10 +105,10 @@ main {
 
 /** SECTION **/
 
-// instead of adding margin on jobs-list
-// create a <main> around it and have padding or margin left/right
-// margin: auto to center
-// 
+/* instead of adding margin on jobs-list
+create a <main> around it and have padding or margin left/right
+margin: auto to center
+*/
 
 section {
 
@@ -118,8 +118,8 @@ section {
 .jobs-list {
 	clear: left;
 	float: left;
-	// margin-left: 80px;
-	// margin-top: 40px;
+	/* margin-left: 80px;
+	margin-top: 40px; */
 	margin: 0;
 	color: lightgray;
 	padding: 0;
