@@ -3,41 +3,46 @@
 <head>
 	<meta name="viewport" width="device-width" initial-scale=1.0; maximum-scale=1.0 charset="utf-8">
 	<title>Quiz App</title>
+	<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 	<main>
-		<!-- quiz header -->
-		<header class="quiz-header">
-			<h1>What Country is Your Food From?</h1>
-		</header>
+
 		<!-- start quiz screen -->
 		<section class="quiz-start-screen">
-		<p>Start the quiz by clicking on the button below</p>
-			<button class="js-start-quiz quiz-start-button">Start Quiz</button>
+		<div class="start">
+		<h1>What <em>Country</em> is Your Food From?</h1>
+			<p>A Quiz for Foodies. Click to test your knowledge.</p>
+				<button class="js-start-quiz quiz-start-button">Start Quiz</button>
+			</div>
 		</section>
 
 		<!-- / start quiz screen -->
 
 		<!-- quiz questions body-->
 		<section class="quiz-section hidden">
+		<div class="track-status">
+				<p>Quiz <span class="quiz-number">1</span> out of 10</p>
+					<p><b>Correct answers:</b> <span class="correct-answers">0</span> <b>Incorrect answers:</b> <span class="incorrect-answers">0</span></p>
+			</div>
 			<article class="quiz-body">
 				<header class="quiz-body-header">
 					<h1>Question?</h1>
-					<p>Quiz <span class="quiz-number">1</span> out of 10</p>
-					<p><b>Correct answers:</b> <span class="correct-answers">0</span> <b>Incorrect answers:</b> <span class="incorrect-answers">0</span></p>
+					<img class="question-image">
 				</header>
 				<section class="quiz-content">
 					<div class="quiz-inner-content">
 						<ul class="multiple-choices">
 						</ul>
-						<input type="submit" value="submit"> 
-					</div>
-					<div class="quiz-feedback hidden">
-						<p>Feedback Here</p>
+						<button class="submit-button js-submit-answer">submit</button> 
 					</div>
 				</section>
 			</article>
+		</section>
+		<section class="try-again-section hidden">
+			<h1>Your Results: </h1>
+			<button class="js-try-again again-button">Try Again?</button>
 		</section>
 	</main>
 	
@@ -47,22 +52,6 @@
 </body>
 </html>
 
-
-<!-- quiz topics question/answers 
-
-Topic: Origin of Foods
-1. egg rolls - China
-2. beef stroganoff - russia
-3. cheesecake - Greece
-4. Danish pastries - Austria
-5. french fries - belgium
-6. fajitas - United States
-7. Kiwi - China
-8. Chicken Tikka Masla - uk
-9. tiramisu - italy
-10. pancakes - Greece
-
--->
 
 
 
