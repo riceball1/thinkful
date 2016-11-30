@@ -1,7 +1,10 @@
-html {
-	margin: 0;
-	background: url("http://www.raviolikitchen.com/wp-content/uploads/2014/08/Ravioli-Kitchen-Web-Background-small1.jpg");
-	background-size: 100% 100%;
+body {
+	margin-top: 40px;
+	background-color: white;   
+	/*width: 100%;
+	height: 100%;
+	background: url('http://cdn.wallpapersafari.com/62/98/gBqZ4H.png') no-repeat;
+	background-size: 100% 100%;*/
 	font-family: 'Varela Round', sans-serif;
 }
 
@@ -10,20 +13,15 @@ html {
 }
 
 .quiz-start-screen {
-	margin: 5% 5%;
-	background-color: tan;
+	position: relative;
+	left: 0;
+	background-color: white;
 	padding: 5px;
-	border-radius: 50px;
+	border-radius: 10px;
 }
 
 .start {
-	border: 2px solid brown;
-	border-radius: 50px;
-	padding: 5px;
-}
-
-.start em {
-	color: brown;
+	padding: 20px;
 }
 
 .start h1 {
@@ -32,58 +30,92 @@ html {
 
 .quiz-start-button {
 	font-size: 1.5em;
-	background-color: orange;
-	border-radius: 15px;
-	border: 2px solid orange;
+	background-color: #56D2C9;
+	border-radius: 10px;
+	position: relative;
+	border: 2px solid #56D2C9;
+	animation-name: example;
+	animation-duration: 4s;
+
 }
 
+@keyframes example {
+    0%   {background-color:#56D2C9; left:0px; top:0px;}
+    25%  {background-color:yellow; left:200px; top:0px;}
+    50%  {background-color:blue; left:-200px; top:200px;}
+    75%  {background-color:green; left:0px; top:200px;}
+    100% {background-color:#56D2C9; left:0px; top:0px;}
+}
+
+
 main {
-	margin: 10% 5%;
+	margin: 5%;
 	padding: 5%;
 	text-align: center;
 }
 
-.quiz-section {
-	border: 2px solid black;
-	padding: 10px;
-	background-color: white;
-}
-
-
-.quiz-content {
-	height: 300px;
-}
-
 .quiz-inner-content {
-	height: 200px;
-	/*border: 2px solid black;*/
+	padding: 5px;
 }
 
 ul.multiple-choices {
 	padding: 0;
 	margin: 0;
+	columns: 2;
 }
 
 .multiple-choices li {
-	background-color: lightblue;
-	padding: 5px;
-	margin: 5px auto;
+	background-color: #ddd;
+	padding: 3px;
+	margin: 3px auto;
 	list-style: none;
-	width: 30%;
+	font-size: 1.5em;
+	width: 100%;
+}
+
+/* green for correct choice*/
+.correct-choice li {
+	background-color: green;
+}
+
+/* red for incorrect choice*/
+.incorrect-choice {
+	background-color: red;
+}
+
+.quiz-body-header {
+	margin: 20px;
 }
 
 .quiz-body-header h1 {
 	font-size: 3em;
+	margin: 0;
 }
 
-.track-status {
-	background-color: #ddd;
+/* nav bar sticky to top */
+nav {
+	font-size: 1.5em;
+	font-weight: bold;
+	color: white;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: #56D2C9;   /* teal */
+	padding: 20px;
+}
+
+.quiz-num-div {
+	display: inline-block;
 }
 
 .question-image {
 	width: 300px;
 	height: auto;
 	margin: 10px;
+	-webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+    box-shadow: 0 8px 6px -6px black;
 }
 
 .submit-button {

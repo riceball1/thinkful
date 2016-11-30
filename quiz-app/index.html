@@ -8,13 +8,17 @@
 </head>
 <body>
 	<main>
-
+	<nav class="track-status hidden">
+		<div class="quiz-num-div">Question <span class="quiz-number">1</span> out of 10</div>
+	</nav>
 		<!-- start quiz screen -->
 		<section class="quiz-start-screen">
-		<div class="start">
-		<h1>What <em>Country</em> is Your Food From?</h1>
-			<p>A Quiz for Foodies. Click to test your knowledge.</p>
-				<button class="js-start-quiz quiz-start-button">Start Quiz</button>
+			<div class="start">
+				<h1>Do you know where your food comes from?</h1>
+				<p>A quiz for food experts.  Are you ready?</p>
+				<button class="js-start-quiz quiz-start-button">
+				Start Quiz!
+				</button>
 			</div>
 		</section>
 
@@ -22,20 +26,15 @@
 
 		<!-- quiz questions body-->
 		<section class="quiz-section hidden">
-		<div class="track-status">
-				<p>Quiz <span class="quiz-number">1</span> out of 10</p>
-					<p><b>Correct answers:</b> <span class="correct-answers">0</span> <b>Incorrect answers:</b> <span class="incorrect-answers">0</span></p>
-			</div>
 			<article class="quiz-body">
 				<header class="quiz-body-header">
-					<h1>Question?</h1>
+					<h1>Where is this food?</h1>
 					<img class="question-image">
 				</header>
 				<section class="quiz-content">
 					<div class="quiz-inner-content">
 						<ul class="multiple-choices">
 						</ul>
-						<button class="submit-button js-submit-answer">submit</button> 
 					</div>
 				</section>
 			</article>
@@ -43,8 +42,13 @@
 		<section class="try-again-section hidden">
 			<h1>Your Results: </h1>
 			<button class="js-try-again again-button">Try Again?</button>
+			<div class="answer-div">
+				<div class="correct-answers answer-span">0</div> 
+				<div class="incorrect-answers answer-span">0</div>
+			</div>
 		</section>
 	</main>
+	
 	
 	<!-- scripts -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

@@ -139,17 +139,16 @@ function displayQuestion(state, data, element) {
 	// if all questions are finished run this
 	else {
 		$('.quiz-section').addClass('hidden');
+		$('.track-status').addClass('hidden');
 		$('.try-again-section').removeClass('hidden');
 	}
 	
 } 
 
-function displayCorrectAnswer() {
-
-}
 
 // resets all data and starts quiz from beginning
-function startAgain() {
+function startAgain(state, data) {
+
 
 }
 
@@ -160,30 +159,39 @@ function startAgain() {
 $('.js-start-quiz').click(function(){
 	$('.quiz-start-screen').addClass('hidden');
 	$('.quiz-section').removeClass('hidden');
+	$('.track-status').removeClass('hidden');
 	// render first question when user starts quiz
 	displayQuestion(state, quizInfo, $('.multiple-choices'));
 });
 
 // click on answer choice
+/// then show correct/incorrect answers
+/// move user to next question
 $('.multiple-choices').on('click', 'li', function(event) {
 	// data-index to determine which answer was chosen
 	var index = $(this).attr("data-index");
-
-
-
-});
-
-
-
-$('.js-submit-answer').on('click', function() {
-	// update the counter each time an answer is submitted
+	// add css styling for chosen answer
+	$(this).css('background-color', '#56D262');
+	// update the counter
 	updateCounter();
-	// then displayCorrect Answer
-	// displayCorrectAnswer();
-	// render next question
+	// display answers
+	// add correct answer score
+	// display next question
 	displayQuestion(state, quizInfo, $('.multiple-choices'));
-	// 
+
 });
+
+
+// remove submit option
+// $('.js-submit-answer').on('click', function() {
+// 	// update the counter each time an answer is submitted
+// 	updateCounter();
+// 	// then displayCorrect Answer
+// 	// displayCorrectAnswer();
+// 	// render next question
+// 	displayQuestion(state, quizInfo, $('.multiple-choices'));
+// 	// 
+// });
 
 
 $('.try-again').on('click', function() {
