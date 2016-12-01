@@ -89,33 +89,28 @@ var quizInfo = [
 
 // things that change all the time
 var state = {
-	// current question --> index 
-		/// counter for current question
-	// correct answers
-	counter: 0,
-	totalCorrect: 0,
-	answerChoice: 0
+	currentQuestionIndex: 0,
+	totalCorrect: 0
 }
 
 
 /*FUNCTIONS */
 
 /** modifies the state **/
-	// update counter
-function updateCounter() {
-	state.counter++;
-	// console.log(state.counter);
+
+function updateCurrentQuestionIndex() {
+	state.currentQuestionIndex++;
 }
 
-	// update correct answers
-
+function updateTotalCorrect() {
+	state.totalCorrect++;
+}
 
 /** renders state **/
 
-// renders questions
 function displayQuestion(state, data, element) {
 	// determine which quiz to render
-	var curIndex = state.counter;
+	var curIndex = state.currentQuestionIndex;
 
 	// if questions are still running
 	if(curIndex < 10) {
@@ -132,7 +127,7 @@ function displayQuestion(state, data, element) {
 		var itemsHTML = "";
 		var choiceList = data[curIndex].choices;
 		for(var i = 0; i < choiceList.length; i++) {
-			itemsHTML += '<li data-index =' + i + '>'+ choiceList[i] +'</li><br>';
+			itemsHTML += '<li class="choice" data-index =' + i + '>'+ choiceList[i] +'</li>';
 		}	    
 		 element.html(itemsHTML);
 		} 
@@ -141,14 +136,17 @@ function displayQuestion(state, data, element) {
 		$('.quiz-section').addClass('hidden');
 		$('.track-status').addClass('hidden');
 		$('.try-again-section').removeClass('hidden');
+		$('.correct-answers').text("Score: " + state.totalCorrect +"/" + quizInfo.length);
 	}
 	
 } 
 
 
 // resets all data and starts quiz from beginning
-function startAgain(state, data) {
-
+function startAgain(state) {
+ // hide try-again
+ // zero out state
+ // unhide quiz-start screen
 
 }
 
@@ -157,6 +155,8 @@ function startAgain(state, data) {
 
 // start quiz
 $('.js-start-quiz').click(function(){
+
+	// make into a function if it repeats
 	$('.quiz-start-screen').addClass('hidden');
 	$('.quiz-section').removeClass('hidden');
 	$('.track-status').removeClass('hidden');
@@ -168,24 +168,25 @@ $('.js-start-quiz').click(function(){
 /// then show correct/incorrect answers
 /// move user to next question
 $('.multiple-choices').on('click', 'li', function(event) {
+	// disabled clicking of other choices
+	$('.choice').prop("disabled", true);
 	// data-index to determine which answer was chosen
 	var answer = $(this).attr("data-index");
-	// add css styling for chosen answer
-	$(this).css('background-color', '#56D262');
-	// update the counter
-	updateCounter();
-	// display answers
-	
-
-	// if answer correct
-	/// add correct answer score
-	if( answer === quizInfo[answer]["correct"]) {
-		state.totalCorrect += 1;
-		console.log(state.totalCorrect);
+	var correctAnswer = quizInfo[state.currentQuestionIndex].correct;
+	if( answer == correctAnswer) {
+		updateTotalCorrect();
+	} else {
+		// incorrect answer
+		// eq gets the nth child
+		$(this).parent().children().eq(correctAnswer).css('background-color', 'red');
 	}
 	
+	// always highlight correct answer green
+	$(this).css('background-color', 'green');
 
-	// display next question
+	// update the counter
+	updateCurrentQuestionIndex();
+
 	setTimeout(function() {
 		displayQuestion(state, quizInfo, $('.multiple-choices'));
 	}, 900);
@@ -193,21 +194,8 @@ $('.multiple-choices').on('click', 'li', function(event) {
 });
 
 
-// remove submit option
-// $('.js-submit-answer').on('click', function() {
-// 	// update the counter each time an answer is submitted
-// 	updateCounter();
-// 	// then displayCorrect Answer
-// 	// displayCorrectAnswer();
-// 	// render next question
-// 	displayQuestion(state, quizInfo, $('.multiple-choices'));
-// 	// 
-// });
-
-
 $('.js-try-again').on('click', function() {
 	// reset quiz
 	// startAgain(state, quizInfo);
 	window.location.reload(true);
-
 });

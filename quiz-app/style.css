@@ -72,15 +72,7 @@ ul.multiple-choices {
 	width: 100%;
 }
 
-/* green for correct choice*/
-.correct-choice li {
-	background-color: green;
-}
 
-/* red for incorrect choice*/
-.incorrect-choice {
-	background-color: red;
-}
 
 .quiz-body-header {
 	margin: 20px;
