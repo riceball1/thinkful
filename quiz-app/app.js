@@ -169,15 +169,26 @@ $('.js-start-quiz').click(function(){
 /// move user to next question
 $('.multiple-choices').on('click', 'li', function(event) {
 	// data-index to determine which answer was chosen
-	var index = $(this).attr("data-index");
+	var answer = $(this).attr("data-index");
 	// add css styling for chosen answer
 	$(this).css('background-color', '#56D262');
 	// update the counter
 	updateCounter();
 	// display answers
-	// add correct answer score
+	
+
+	// if answer correct
+	/// add correct answer score
+	if( answer === quizInfo[answer]["correct"]) {
+		state.totalCorrect += 1;
+		console.log(state.totalCorrect);
+	}
+	
+
 	// display next question
-	displayQuestion(state, quizInfo, $('.multiple-choices'));
+	setTimeout(function() {
+		displayQuestion(state, quizInfo, $('.multiple-choices'));
+	}, 900);
 
 });
 
@@ -194,7 +205,9 @@ $('.multiple-choices').on('click', 'li', function(event) {
 // });
 
 
-$('.try-again').on('click', function() {
+$('.js-try-again').on('click', function() {
 	// reset quiz
-	startAgain(state, quizInfo);
+	// startAgain(state, quizInfo);
+	window.location.reload(true);
+
 });
