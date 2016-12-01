@@ -194,7 +194,9 @@ $('.multiple-choices').on('click', 'li', function(event) {
 	}
 	
 	// find correct answer and highlight green
-	$(this).parent().children().eq(correctAnswer).css('background-color', '#57D256');
+	// $(this).parent().children().eq(correctAnswer).css('background-color', '#57D256');
+	var selectItem = "[data-index='"+correctAnswer+"']";
+	$(selectItem).css('background-color', '#57D256');
 
 	// update the counter
 	updateCurrentQuestionIndex();
