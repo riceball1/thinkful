@@ -152,8 +152,12 @@ function displayQuestion(state, data, element) {
 // resets all data and starts quiz from beginning
 function startAgain(state) {
  // hide try-again
+ $('.try-again-section').addClass('hidden');
  // zero out state
+ state.currentQuestionIndex = 0;
+ state.totalCorrect = 0;
  // unhide quiz-start screen
+ $('.quiz-start-screen').removeClass('hidden');
 
 }
 
@@ -162,8 +166,6 @@ function startAgain(state) {
 
 // start quiz
 $('.js-start-quiz').click(function(){
-
-	// make into a function if it repeats
 	$('.quiz-start-screen').addClass('hidden');
 	$('.quiz-section').removeClass('hidden');
 	$('.track-status').removeClass('hidden');
@@ -205,7 +207,5 @@ $('.multiple-choices').on('click', 'li', function(event) {
 
 
 $('.js-try-again').on('click', function() {
-	// reset quiz
-	// startAgain(state, quizInfo);
-	window.location.reload(true);
+	startAgain(state);
 });
