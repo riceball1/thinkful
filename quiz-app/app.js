@@ -10,7 +10,7 @@ var quizInfo = [
 			choices: ["Italy", "France", "Libya", "Canada"],
 			// Italy
 			correct: 0,
-			src: "https://i.ytimg.com/vi/om_c_HHoYHc/maxresdefault.jpg"
+			src: "images/tiramisu.jpg"
 		},
 	// 2
 		{
@@ -18,7 +18,7 @@ var quizInfo = [
 			choices: ["Japan", "China", "Vietnam", "Singapore"],
 			// China
 			correct: 1,
-			src: "http://www.thelittlekitchen.net/wp-content/uploads/2011/12/jadens-egg-rolls-6.jpg"
+			src: "images/egg-rolls.jpg"
 
 		},
 	// 3
@@ -27,7 +27,7 @@ var quizInfo = [
 			choices: ["Ukraine", "Poland", "France", "Russia"],
 			// Russia
 			correct: 3,
-			src: "http://www.finecooking.com/cms/uploadedimages/Images/Cooking/Articles/Issues_111-120/051115062-01-classic-beef-stroganoff-recipe_xlg.jpg"
+			src: "images/beef-stroganoff.jpg"
 		},
 		// 4
 		{
@@ -35,7 +35,7 @@ var quizInfo = [
 			choices: ["Italy", "France", "Greece", "Morocco"],
 			// Greece
 			correct: 2,
-			src: "http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/4/23/0/64372_Giadas-Dessert_s4x3.jpg"
+			src: "images/cheesecake.jpg"
 		},
 		// 5
 		{
@@ -43,7 +43,7 @@ var quizInfo = [
 			choices: ["The Netherlands", "Iceland", "Austria", "United Kingdom"],
 			// Austria
 			correct: 2,
-			src: "https://static1.squarespace.com/static/54fd0599e4b056e886645788/551e5906e4b06a5b2a86dbbd/551e5940e4b07f2b9a26a46a/1428052288327/Danish+Pastry3.jpg"
+			src: "images/danish-pastry.jpg"
 		},
 		// 6
 		{
@@ -51,7 +51,7 @@ var quizInfo = [
 			choices: ["France", "Belgium", "Kenya", "Ireland"],
 			// Belgium 
 			correct: 1,
-			src: "http://www.livescience.com/images/i/000/086/534/original/french-fries.jpg?interpolation=lanczos-none&fit=inside%7C660:*"
+			src: "images/french-fries.jpg"
 		},
 		// 7
 		{
@@ -59,7 +59,7 @@ var quizInfo = [
 			choices: ["United States", "Germany", "Mexico", "Cuba"],
 			// USA
 			correct: 0, 
-			src: "http://www.cheatsheet.com/wp-content/uploads/2015/12/mexican-food-beef-fajitas-and-bell-peppers1.jpg?b6542f"
+			src: "images/fajitas.jpg"
 		},
 		// 8
 		{
@@ -67,7 +67,7 @@ var quizInfo = [
 			choices: ["New Zealand", "China", "Japan", "Laos"],
 			// China
 			correct: 1,
-			src: "http://listsurge.com/wp-content/uploads/2015/08/kiwi.jpg"
+			src: "images/kiwi.jpg"
 		},
 		// 9
 		{
@@ -75,7 +75,7 @@ var quizInfo = [
 			choices: ["India", "Nepal", "United Kingdom", "The Netherlands"],
 			// United Kingdom
 			correct: 2,
-			src: "http://rasamalaysia.com/wp-content/uploads/2016/03/chicken-tikka-masala-thumb.jpg"
+			src: "images/chicken-tikka-masala.jpg"
 		},
 		// 10
 		{
@@ -83,7 +83,7 @@ var quizInfo = [
 			choices: ["France", "Portugal", "Austra", "Greece"],
 			// Greece
 			correct: 3,
-			src: "https://redtricom.files.wordpress.com/2013/03/pancakes-1.jpg"
+			src: "images/pancakes.jpg"
 		}
 	]
 
