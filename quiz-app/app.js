@@ -136,7 +136,14 @@ function displayQuestion(state, data, element) {
 		$('.quiz-section').addClass('hidden');
 		$('.track-status').addClass('hidden');
 		$('.try-again-section').removeClass('hidden');
-		$('.correct-answers').text("Score: " + state.totalCorrect +"/" + quizInfo.length);
+		if(state.totalCorrect > 9) {
+			$('.correct-answers').html("<h1>Score: " + state.totalCorrect +"/" + quizInfo.length +"</h1>" + "<p>Great Job! You really are a food expert!</p>");
+		} else if(state.totalCorrect > 7) {
+			$('.correct-answers').html("<h1>Score: " + state.totalCorrect +"/" + quizInfo.length +"</h1>" + "<p>Not bad! Let's eat more food to improve our score!</p>");
+		} else {
+			$('.correct-answers').html("<h1>Score: " + state.totalCorrect +"/" + quizInfo.length +"</h1>" + "<p>Awww.. looks like someone needs to do a food tour around the world. Maybe next time you'll get your score higher.</p>");
+		}
+		
 	}
 	
 } 
@@ -175,14 +182,17 @@ $('.multiple-choices').on('click', 'li', function(event) {
 	var correctAnswer = quizInfo[state.currentQuestionIndex].correct;
 	if( answer == correctAnswer) {
 		updateTotalCorrect();
+		// green for correct answer
+		$(this).css('background-color', '#57D256');
 	} else {
-		// incorrect answer
-		// eq gets the nth child
-		$(this).parent().children().eq(correctAnswer).css('background-color', 'red');
+		// highlight incorrect answer
+		// E63663 = red
+		$(this).css('background-color', '#E63663');
+		// #57D256 = green
 	}
 	
-	// always highlight correct answer green
-	$(this).css('background-color', 'green');
+	// find correct answer and highlight green
+	$(this).parent().children().eq(correctAnswer).css('background-color', '#57D256');
 
 	// update the counter
 	updateCurrentQuestionIndex();
