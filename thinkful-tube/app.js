@@ -23,9 +23,8 @@ function displaySearchData(data) {
   var resultElement = '';
   for(var i = 0; i < (data.items).length; i++) {
   var dataInfo = data.items[i].snippet;
-  var description = dataInfo['description']; 
-  var src = dataInfo['thumbnails']['medium']['url'];
-  var link = dataInfo["channelId"];
+  var src = dataInfo.thumbnails.medium.url;
+  var link = dataInfo.channelId;
    console.log(dataInfo);
   resultElement += '<div class="items"><a href="https://www.youtube.com/channel/'+ link +'" target="_blank"><img src="'+ src +'" class="thumbnails"></a>' + '</div>';
   
@@ -38,8 +37,13 @@ function watchSubmit() {
   $('.js-search-form').submit(function(e) {
     e.preventDefault();
     var query = $(this).find('.js-query').val();
-    resultElement = '';
-    getDataFromApi(query, displaySearchData);
+    if(query.length > 0) {
+      resultElement = '';
+      getDataFromApi(query, displaySearchData);
+    } else {
+      alert("Please type something to begin search");
+    }
+    
   });
 }
 
