@@ -1,0 +1,62 @@
+body {
+	margin: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+main.content {
+	margin: 20px auto;
+	padding: 10%;
+}
+
+.search-form {
+	font-size: 2em;
+}
+
+
+h1 {
+	margin: 0;
+	text-align: center;
+	font-family: 'Fredoka One', cursive;
+	font-size: 3em;
+}
+
+input[type="text"] {
+	font-size: 30px;
+	width: 50%;
+	height: 20%;
+	margin: 10px auto;
+	border-radius: 15px;
+	border: 2px solid #ddd;
+	padding: 10px;
+	outline: 0;
+	display: block;
+}
+
+.thumbnails {
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+}
+
+.items {
+	
+	padding: 10px;
+	margin: 10px;
+}
+
+.search-button {
+	width: 75px;
+	height: 40px;
+	margin: 10px auto;
+	font-size: 16px;
+	color: white;
+	border-radius: 15px;
+	background-color: red;
+	border: none;
+	display: block;
+}
+
+.search-results {
+
+}
