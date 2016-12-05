@@ -7,9 +7,7 @@ function getDataFromApi(searchTerm, callback) {
       q: searchTerm,
       part: 'snippet',
       key: 'AIzaSyAuB6kqL52NjpIT8qi8y1MasDE5OXcjz7g'
-    },
-      
-      
+    }, 
     dataType: 'json',
     type: 'GET',
     success: callback
@@ -17,19 +15,21 @@ function getDataFromApi(searchTerm, callback) {
   $.ajax(settings);
 }
 
-
-
 function displaySearchData(data) {
   var resultElement = '';
   for(var i = 0; i < (data.items).length; i++) {
-  var dataInfo = data.items[i].snippet;
-  var src = dataInfo.thumbnails.medium.url;
-  var link = dataInfo.channelId;
-   console.log(dataInfo);
-  resultElement += '<div class="items"><a href="https://www.youtube.com/channel/'+ link +'" target="_blank"><img src="'+ src +'" class="thumbnails"></a>' + '</div>';
-  
+    var item = data.items[i];
+    var dataInfo = item.snippet;
+    var src = dataInfo.thumbnails.medium.url;
+    var kind = item.id.kind;
+    if(kind == "youtube#video") {
+      var videoId = item.id.videoId;
+      resultElement += '<div class="items"><a href="https://www.youtube.com/watch?v='+ videoId +'" target="_blank"><img src="'+ src +'" class="thumbnails"></a>' + '</div>';
+    } else if (kind == "youtube#channel") {
+      var channelId = dataInfo.channelId;
+      resultElement += '<div class="items"><a href="https://www.youtube.com/channel/'+ channelId +'" target="_blank"><img src="'+ src +'" class="thumbnails"></a>' + '</div>';
+    } 
   }
-  
   $('.js-search-results').html(resultElement);
 }
 
@@ -43,7 +43,6 @@ function watchSubmit() {
     } else {
       alert("Please type something to begin search");
     }
-    
   });
 }
 
