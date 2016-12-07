@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Multilingual Tweeter</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+ 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+ 	<link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+  	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+	<h1>Multilingual Tweeter</h1>
+</header>
+<main class="container">
+	<section class="search-form">
+	<form id="js-twitter-form">
+      <input type="text" name="twitter-keyword-entry" id="twitter-keyword-entry" placeholder="type #keyword here">
+    </form>
+	</section>
+	<section class="tools">
+		<button>translate</button>
+	</section>
+	<section class="tweet-list hidden">
+		<ul class="individual-tweets-list">
+		</ul>
+	</section>
+	<img src="images/translate-bubble.png" class="bubble">
+</main>
+
+
+<!-- scripts -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="app.js"></script>
+
+</body>
+</html>

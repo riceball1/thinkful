@@ -1,0 +1,80 @@
+// *{
+// 	box-sizing: border-box;
+// }
+
+/* colors:
+	#E63663 - bright coral
+	#03A9F4 - bright blue
+*/
+
+body {
+	font-family: 'Roboto', sans-serif;
+	background-color: #ddd;
+	color: white;
+	padding: 10px;
+}
+
+.container {
+	margin: 0px auto;
+	padding: 10px;
+}
+
+.tools {
+	padding: 20px;
+	text-align: center;
+}
+
+/* header */
+
+header {
+	text-align: center;
+	margin: 0 auto;
+}
+
+h1 {
+	color: #03A9F4;
+	font-size: 400%;
+	margin: 0px 0px 0px 40px;
+	font-family: 'Bree Serif', serif;
+}
+
+.bubble {
+	width: 200px;
+	height: 200px;
+	position: fixed;
+	right: 0;
+	bottom: 0;
+}
+
+/* form */
+
+.search-form {
+	padding: 20px;
+	text-align: center;
+}
+
+input[type="text"] {
+	padding: 10px;
+	border-radius: 10px;
+	border: 2px solid #E63663;
+	width: 50%;
+	font-size: 30px;
+}
+
+button {
+	border-radius: 10px;
+	border: 0;
+	font-size: 1.5em;
+	background-color: #E63663;
+}
+
+.tweet-list {
+	border: 1px solid black;
+	width: 50%;
+	height: 500px;
+}
+
+
+.hidden {
+	display: none;
+}
