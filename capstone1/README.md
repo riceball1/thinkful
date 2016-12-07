@@ -1,11 +1,7 @@
 
 
-User Flow
+The following are images of my user flow and wireframe respectively.
 
-[Imgur](http://i.imgur.com/0WgQYyt.png)
+[User Flow](http://i.imgur.com/0WgQYyt.png)
 
-
-
-Wireframe
-
-[Imgur](http://i.imgur.com/pDg2cbq.jpg)
+[Wireframe](http://i.imgur.com/pDg2cbq.jpg)
