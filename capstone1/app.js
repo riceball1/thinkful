@@ -16,7 +16,7 @@ function tweeterList() {
 
   **/
 
-  function getDataFromTwitter(searchTerm, callback) {
+  function getDataFromTwitter(searchTerm) {
     var settings = {
       url: TWITTER_BASE_URL,
       param: {
@@ -26,14 +26,16 @@ function tweeterList() {
       dataType: 'jsonp',
     	// key: 'NikTLag7fpTj0yW7xU7k0neWL',
       // type: 'GET',
-      success: callback
+      success: function (data) {
+      	console.dir(data);
+      }
     };
     $.ajax(settings);
   }
 
-  function displayTwitterData(data) {
-  	console.dir(data);
-  }
+  // function displayTwitterData(data) {
+  // 	console.dir(data);
+  // }
 
 
 
@@ -45,7 +47,7 @@ function tweeterList() {
   		event.preventDefault();
   		var keyword = $(event.currentTarget).val();
   		$('.tweet-list').removeClass('hidden');
-  		getDataFromTwitter(keyword, displayTwitterData);
+  		getDataFromTwitter(keyword);
   	}
   });
 
