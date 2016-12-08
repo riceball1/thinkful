@@ -1,42 +1,56 @@
 "use strict";
 
 function tweeterList() {
+  console.log("Document is ready!");
+  /** API **/
 
-/** API **/
+  /** need a twitter authorization access **/
 
-var TWITTER_BASE_URL = 'https://www.googleapis.com/youtube/v3/search';
+  var TWITTER_BASE_URL = 'https://api.twitter.com/1.1/search/tweets.json?';
+  var GOOGLE_TRANSLATE_URL = 'https://translation.googleapis.com/language/translate/v2?parameters';
 
-function getDataFromApi(searchTerm, callback) {
-  var settings = {
-    url: YOUTUBE_BASE_URL,
-    data: {
-      q: searchTerm,
-      part: 'snippet',
-      key: 'AIzaSyAuB6kqL52NjpIT8qi8y1MasDE5OXcjz7g'
-    }, 
-    dataType: 'json',
-    type: 'GET',
-    success: callback
-  };
-  $.ajax(settings);
-}
+  /**
+  Google Translate API: AIzaSyAtJKvopaIjH35PWmSG8yuDv65u94bvwxg
+  Twitter API:
+  NikTLag7fpTj0yW7xU7k0neWL
 
-function displayData() {
-	console.log("Display Data");
-}
+  **/
+
+  function getDataFromTwitter(searchTerm, callback) {
+    var settings = {
+      url: TWITTER_BASE_URL,
+      param: {
+    	q: searchTerm
+    	// result_type: 'recent'
+      },
+      dataType: 'jsonp',
+    	// key: 'NikTLag7fpTj0yW7xU7k0neWL',
+      // type: 'GET',
+      success: callback
+    };
+    $.ajax(settings);
+  }
+
+  function displayTwitterData(data) {
+  	console.dir(data);
+  }
 
 
 
-/** EVENT LISTENERS**/
+  /** EVENT LISTENERS**/
 
-$('input[type="text"').on('keypress', function(event){
-	if(event.keyCode == 13) {
-		event.preventDefault();
-		var keyword = $(event.currentTarget).val();
-		$('.tweet-list').removeClass('hidden');
-		getDataFromApi(keyword, displayData);
-	}
-});
+  // watch for enter in keyword
+  $('input[type="text"').on('keypress', function(event){
+  	if(event.keyCode == 13) {
+  		event.preventDefault();
+  		var keyword = $(event.currentTarget).val();
+  		$('.tweet-list').removeClass('hidden');
+  		getDataFromTwitter(keyword, displayTwitterData);
+  	}
+  });
+
+   // watch for translate
+   // getDataFromGoogleTranslate()
 
 }
 
