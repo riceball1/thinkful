@@ -6,7 +6,7 @@ function tweeterList() {
 
   /** need a twitter authorization access **/
 
-  var TWITTER_BASE_URL = 'https://api.twitter.com/1.1/search/tweets.json?';
+  var TWITTER_BASE_URL = 'http://search.twitter.com/search.json?';
   var GOOGLE_TRANSLATE_URL = 'https://translation.googleapis.com/language/translate/v2?parameters';
 
   /**
@@ -18,14 +18,9 @@ function tweeterList() {
 
   function getDataFromTwitter(searchTerm) {
     var settings = {
-      url: TWITTER_BASE_URL,
-      param: {
-    	q: searchTerm
-    	// result_type: 'recent'
-      },
+      url: TWITTER_BASE_URL +
+    	$.param(searchTerm),
       dataType: 'jsonp',
-    	// key: 'NikTLag7fpTj0yW7xU7k0neWL',
-      // type: 'GET',
       success: function (data) {
       	console.dir(data);
       }
@@ -45,7 +40,8 @@ function tweeterList() {
   $('input[type="text"').on('keypress', function(event){
   	if(event.keyCode == 13) {
   		event.preventDefault();
-  		var keyword = $(event.currentTarget).val();
+  		var keyword = { q: $(event.currentTarget).val() };
+      console.log("Keyword: ", keyword);
   		$('.tweet-list').removeClass('hidden');
   		getDataFromTwitter(keyword);
   	}
