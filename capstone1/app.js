@@ -16,6 +16,7 @@ function tweeterList() {
 
   **/
 
+
   function getDataFromTwitter(searchTerm) {
     var settings = {
       url: TWITTER_BASE_URL +
