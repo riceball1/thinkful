@@ -9,13 +9,6 @@ function tweeterList() {
   var TWITTER_BASE_URL = 'http://search.twitter.com/search.json?';
   var GOOGLE_TRANSLATE_URL = 'https://translation.googleapis.com/language/translate/v2?parameters';
 
-  /**
-  Google Translate API: AIzaSyAtJKvopaIjH35PWmSG8yuDv65u94bvwxg
-  Twitter API:
-  NikTLag7fpTj0yW7xU7k0neWL
-
-  **/
-
 
   function getDataFromTwitter(searchTerm) {
     var settings = {
