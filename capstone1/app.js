@@ -2,29 +2,42 @@
 
 function tweeterList() {
   console.log("Document is ready!");
-  /** API **/
+  
 
-  /** need a twitter authorization access **/
-
-  var TWITTER_BASE_URL = 'http://search.twitter.com/search.json?';
-  var GOOGLE_TRANSLATE_URL = 'https://translation.googleapis.com/language/translate/v2?parameters';
+  var TWITTER_BASE_URL = 'https://morning-ravine-82145.herokuapp.com/';
+  var YANDEX_TRANSLATE_URL = 'https://translation.googleapis.com/language/translate/v2?parameters';
 
 
-  function getDataFromTwitter(searchTerm) {
-    var settings = {
-      url: TWITTER_BASE_URL +
-    	$.param(searchTerm),
+  function getDataFromTwitter(searchTerm, callback) {
+    $.ajax({
+      url: TWITTER_BASE_URL + $.param(searchTerm),
       dataType: 'jsonp',
-      success: function (data) {
-      	console.dir(data);
-      }
-    };
-    $.ajax(settings);
+      success: callback,
+      type: 'GET'
+    });
   }
 
-  // function displayTwitterData(data) {
-  // 	console.dir(data);
-  // }
+  function displayTwitterData(data) {
+    // get data into state
+    for(var i = 0; i < 5; i++) {
+      console.log(data.statuses[i]);
+  }
+    
+  function getDataFromYandex(text, callback) {
+    $.ajax({
+      url: YANDEX_TRANSLATE_URL,
+      dataType: 'jsonp',
+      success: callback,
+      type: 'GET'
+    });
+  }
+
+
+
+
+  }
+
+
 
 
 
@@ -37,7 +50,7 @@ function tweeterList() {
   		var keyword = { q: $(event.currentTarget).val() };
       console.log("Keyword: ", keyword);
   		$('.tweet-list').removeClass('hidden');
-  		getDataFromTwitter(keyword);
+  		getDataFromTwitter(keyword, displayTwitterData);
   	}
   });
 
