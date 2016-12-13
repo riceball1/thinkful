@@ -19,17 +19,18 @@
 	<section class="search-form">
 	<form id="js-twitter-form">
       <input type="text" name="twitter-keyword-entry" id="twitter-keyword-entry" placeholder="type #keyword here" required>
-      <input type="number" name="limitTweeterItems" id="limitTweeterItems" placeholder="limit tweets" min="1">
+      <input type="number" name="limitTweeterItems" id="limitTweeterItems" placeholder="# of tweets" min="1">
       <button class="js-submit-search" type="btn">submit</button>
     </form>
 	</section>
-	<section class="tools hidden">
+	<section class="tools">
+		<div class="language-choice"></div>
 		<div class="dropdown">
 			<button class="dropbtn">Translate Options</button>
 		  	<div class="dropdown-content">
-			    <option value="spanish">Spanish</option>
-			    <option>Russian</option>
-			    <option>French</option>
+			    <option value="sp">Spanish</option>
+			    <option value="ru">Russian</option>
+			    <option value="fr">French</option>
 		  	</div>
 		</div>
 	</section>

@@ -41,16 +41,20 @@ function tweeterList() {
 
   function getDataFromYandex(text, language, callback) {
     $.ajax({
-      url: YANDEX_TRANSLATE_URL,
-      dataType: 'json',
-      key: 'trnsl.1.1.20161212T153919Z.2c641cfa919addd2.4255914407af1a02e8559664527d9d96260beeca',
-      success: callback,
-      text: text,
-      type: 'GET',
-      ui: language,
-      format: "html",
-      error: function(e) {
-        console.log(e);
+      // url: YANDEX_TRANSLATE_URL+ "&key=" + this.key + "&text=" + this.text + "&lang=" + this.lang,
+      // dataType: 'jsonp',
+      // key: 'trnsl.1.1.20161212T153919Z.2c641cfa919addd2.4255914407af1a02e8559664527d9d96260beeca',
+      // success: callback,
+      // text: text,
+      // type: 'POST',
+      // lang: language,
+      // error: function(e) {
+      //   console.log(e);
+      // }
+      url: 'https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20140720T191145Z.05605441c6ee16dc.eaaf6c6c8690cb5fb094cea2bfec4f787af6170c&lang=ru&text=C%27est+la+question',
+      dataType: "jsonp",
+      success: function (data) {
+        console.log(data);
       }
     });
   }
@@ -113,8 +117,18 @@ function tweeterList() {
     }
   });
 
+  // select language to translate tweets
+  $('.dropdown-content').on('click', 'option', function(event) {
+      var lang = $(this).val();
+      var langName = $(this).text();
+      state.language = lang;
+      console.log(state.language);
+      $('.language-choice').html(langName);
+
+  });
+
   $('.translate-me').click(function() {
-    var text = $('.original-text').val();
+    var text = $('.original-text').text();
     var language = 'ru';
     getDataFromYandex(text, language, displayYandexData);
   });
