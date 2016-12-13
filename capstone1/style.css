@@ -5,12 +5,12 @@
 /* colors:
 	#E63663 - bright coral
 	#03A9F4 - bright blue
+	#95A5A6 - darkgrayish
 */
 
 body {
 	font-family: 'Roboto', sans-serif;
 	background-color: #ddd;
-	color: white;
 	padding: 10px;
 }
 
@@ -57,8 +57,17 @@ input[type="text"] {
 	padding: 10px;
 	border-radius: 10px;
 	border: 2px solid #E63663;
-	width: 50%;
+	width: 40%;
 	font-size: 30px;
+}
+
+input[type="number"] {
+	padding: 10px;
+	border-radius: 10px;
+	border: 2px solid #E63663;
+	width: 20%;
+	font-size: 30px;
+	text-align: center;
 }
 
 button {
@@ -68,17 +77,85 @@ button {
 	background-color: #E63663;
 }
 
+/** TWEET LIST **/
+
 .tweet-list {
-	border: 1px solid black;
-	width: 50%;
+	border: 1px solid #95A5A6;
+	width: 60%;
 	height: 500px;
-	margin: 0px auto;
-	background-color: white;
-	border-radius: 10px;
-	border: 3px solid darkgray;
+	overflow: auto;
+	border-radius: 5px;
 }
 
+.individual-tweets {
+	margin: 10px;
+	padding: 5px;
+	border: 1px solid #95A5A6;
+	background-color: #FFF;
+}
+
+/* DROPDOWN MENU */
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+/* Links inside the dropdown */
+.dropdown-content option {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content option:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+/** OTHER STYLES **/
 
 .hidden {
 	display: none;
+}
+
+/** MEDIA QUERIES **/
+
+@media (max-width: 900px) {
+	input[type="text"], input[type="number"] {
+		font-size: 16px;
+	}
+}
+
+@media (max-width: 600px) {
+	input[type="text"], input[type="number"] {
+		font-size: 14px;
+	}
 }

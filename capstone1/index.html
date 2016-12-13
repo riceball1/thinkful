@@ -2,9 +2,13 @@
 <html lang="en">
 <head>
 	<title>Multilingual Tweeter</title>
+	<!-- external style sheets -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+	<!-- fonts -->
  	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
  	<link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+ 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+ 	<!-- customized css -->
   	<link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,19 +18,36 @@
 <main class="container">
 	<section class="search-form">
 	<form id="js-twitter-form">
-      <input type="text" name="twitter-keyword-entry" id="twitter-keyword-entry" placeholder="type #keyword here">
+      <input type="text" name="twitter-keyword-entry" id="twitter-keyword-entry" placeholder="type #keyword here" required>
+      <input type="number" name="limitTweeterItems" id="limitTweeterItems" placeholder="limit tweets" min="1">
+      <button class="js-submit-search" type="btn">submit</button>
     </form>
 	</section>
-	<section class="tools">
-		<button class="translator">translate</button>
+	<section class="tools hidden">
+		<div class="dropdown">
+			<button class="dropbtn">Translate Options</button>
+		  	<div class="dropdown-content">
+			    <option value="spanish">Spanish</option>
+			    <option>Russian</option>
+			    <option>French</option>
+		  	</div>
+		</div>
 	</section>
 	<section class="tweet-list hidden">
-		<div class="js-google-translate">
-			<p>Let's Translate This Text.</p>
-		</div>
 		<div class="individual-tweets-list">
+			<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+			<span class="sr-only">Loading...</span>
 		</div>
 	</section>
+	<section class="translated-tweets hidden">
+		<div class="translated-tweets-list">
+		</div>
+	</section>
+	<div class="test-translation">
+		<p class="original-text">This is the original text.</p>
+		<p class="translated-text"></p>
+		<button class="translate-me">translate into russian</button>
+	</div>
 	<img src="images/translate-bubble.png" class="bubble">
 </main>
 

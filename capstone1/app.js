@@ -14,53 +14,109 @@ function tweeterList() {
     });
   }
 
-  function displayTweetData(data, lengthToDisplay=10) {
+  function displayTweetData(data) {
     var resultElement = '';
-    for(var i = 0; i < lengthToDisplay; i++) {
-        // do stuff here to render onto html
+    console.log(data);
+    if(data.statuses.length == 0) {
+        console.log("Search did not find anything.");
+        resultElement += "<p>Search did not find anything.</p>";
+      } else {
+    for(var i = 0; i < state.tweetLimit; i++) {
+        var individualTweets = data.statuses[i];
+        var userInfo = individualTweets.user;
+        var author = userInfo.name;
+        var username = userInfo.screen_name;
+        var avatar = userInfo.profile_image_url;
+        var timestamp = userInfo.created_at;
+        var utc_offset = userInfo.utc_offset;
+        var time_zone = userInfo.time_zone;
+        var tweetText = individualTweets.text;
+        var language = individualTweets.metadata.iso_language_code;
+        resultElement += '<div class="individual-tweets"' + 'data-lang="' + language + '" data-index="' + i +'">'
+        + '<div class="authorInfo"><img src="' + avatar + '" class="avatar">' + '<span class="authorName">'+ author +'</span>' + '<span class="authorHandle">@' + username+ '</div>' + '<div class="tweetText">'+ tweetText + '<span class="timestamp">' + timestamp +'<i class="fa fa-twitter" aria-hidden="true"></i></div></div>';
+      }
     }
     $('.individual-tweets-list').html(resultElement);
   }
 
-  function getDataFromYandex(text, callback) {
+  function getDataFromYandex(text, language, callback) {
     $.ajax({
       url: YANDEX_TRANSLATE_URL,
       dataType: 'jsonp',
       key: 'trnsl.1.1.20161212T153919Z.2c641cfa919addd2.4255914407af1a02e8559664527d9d96260beeca',
       success: callback,
-      type: 'GET'
+      text: text,
+      type: 'GET',
+      lang: language,
+      format: "html",
+      error: function(e) {
+        console.log(e);
+      }
     });
   }
 
+  function displayYandexData(data) {
+    console.log(data);
+  }
 
 // create a place for the data to be held
   var state = {
-    searchTerm: ''
+    searchTerm: '',
+    language: 'en',
+    tweetLimit: '10'
   };
 
   /** EVENT LISTENERS**/
 
-  // watch for enter in keyword
-  $('input[type="text"').on('keypress', function(event){
-    // watches for 'enter'
-  	if(event.keyCode == 13) {
+  // watch for click on submit button
+  $('.js-submit-search').on('click', function(event) {
   		event.preventDefault();
-      var word = $(event.currentTarget).val();
+      var word = $('#twitter-keyword-entry').val();
   		var keyword = { q: word };
       // keep searchTerm in state
       state.searchTerm = word;
+      var limitTweetAmount = $('#limitTweeterItems').val();
+      console.log(limitTweetAmount);
+      if(limitTweetAmount > 0) {
+        state.tweetLimit = limitTweetAmount;
+      } else {
+        // set default tweetLimit
+        state.tweetLimit = 10;
+      }
       console.log("Keyword: ", keyword);
       console.log(word);
   		$('.tweet-list').removeClass('hidden');
-      // clears the results when doing a new search
-      resultElement = '';
+      $('.tools').removeClass('hidden');
   		getDataFromTwitter(keyword, displayTweetData);
-  	}
   });
 
-  $('.translator').click(function() {
-    var text = $('.js-google-translate')[0].innerText;
-    console.log(text);
+  // watch for enter on keyword
+  $('.js-submit-search').on('keypress', function(event) {
+    if(event.key === 13) {
+      event.preventDefault();
+      var word = $('#twitter-keyword-entry').val();
+      var keyword = { q: word };
+      // keep searchTerm in state
+      state.searchTerm = word;
+      var limitTweetAmount = $('#limitTweeterItems').val();
+      console.log(limitTweetAmount);
+      if(limitTweetAmount > 0) {
+        state.tweetLimit = limitTweetAmount;
+      } else {
+        // set default tweetLimit
+        state.tweetLimit = 10;
+      }
+      console.log("Keyword: ", keyword);
+      console.log(word);
+      $('.tweet-list').removeClass('hidden');
+      getDataFromTwitter(keyword, displayTweetData);
+    }
+  });
+
+  $('.translate-me').click(function() {
+    var text = $('.original-text').val();
+    var language = 'ru';
+    getDataFromYandex(text, language, displayYandexData);
   });
 
 }
