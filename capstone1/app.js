@@ -3,7 +3,7 @@
 function tweeterList() {
   console.log("Document is ready!");
   var TWITTER_BASE_URL = 'https://morning-ravine-82145.herokuapp.com/';
-  var YANDEX_TRANSLATE_URL = 'https://translate.yandex.net/api/v1.5/tr.json/translate?';
+  var YANDEX_TRANSLATE_URL = 'https://translate.yandex.net/api/v1.5/tr.json/detect?';
 
   function getDataFromTwitter(searchTerm, callback) {
     $.ajax({
@@ -42,12 +42,12 @@ function tweeterList() {
   function getDataFromYandex(text, language, callback) {
     $.ajax({
       url: YANDEX_TRANSLATE_URL,
-      dataType: 'jsonp',
+      dataType: 'json',
       key: 'trnsl.1.1.20161212T153919Z.2c641cfa919addd2.4255914407af1a02e8559664527d9d96260beeca',
       success: callback,
       text: text,
       type: 'GET',
-      lang: language,
+      ui: language,
       format: "html",
       error: function(e) {
         console.log(e);
