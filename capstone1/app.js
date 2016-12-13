@@ -33,7 +33,7 @@ function tweeterList() {
         var tweetText = individualTweets.text;
         var language = individualTweets.metadata.iso_language_code;
         resultElement += '<div class="individual-tweets"' + 'data-lang="' + language + '" data-index="' + i +'">'
-        + '<div class="authorInfo"><img src="' + avatar + '" class="avatar">' + '<span class="authorName">'+ author +'</span>' + '<span class="authorHandle">@' + username+ '</div>' + '<div class="tweetText">'+ tweetText + '<span class="timestamp">' + timestamp +'<i class="fa fa-twitter" aria-hidden="true"></i></div></div>';
+        + '<div class="authorInfo"><img src="' + avatar + '" class="avatar">' + '<span class="authorName">'+ author +'</span>' + '<span class="authorHandle">@' + username+ '</div>' + '<div class="tweetContent"><p class="tweetText">'+ tweetText + '</p><span class="timestamp">' + timestamp +'<i class="fa fa-twitter" aria-hidden="true"></i></div></div>';
       }
     }
     $('.individual-tweets-list').html(resultElement);
@@ -53,10 +53,7 @@ function tweeterList() {
       type: 'GET',
       ui: language,
       format: "html",
-      success: function (response) {
-        console.log(this.url)
-        $('.translated-text').html(response.text[0])  //translated text. 
-      },
+      success: callback,
       error: function(error) {
         console.log(this.url)
         console.log(error);
@@ -65,37 +62,41 @@ function tweeterList() {
   }
 
   function displayYandexData(data) {
-    console.log(data);
+    var tweetResponse = data.text[0];  //translated text. 
+    state.tweetText = tweetResponse;
+    console.log(tweetResponse);
+    $('.tweetText:first').html(state.tweetText);
   }
 
-// create a place for the data to be held
-  var state = {
-    searchTerm: '',
-    language: 'en',
-    tweetLimit: '10'
-  };
-
-  /** EVENT LISTENERS**/
-
-  // watch for click on submit button
-  $('.js-submit-search').on('click', function(event) {
-  		event.preventDefault();
-      var word = $('#twitter-keyword-entry').val();
-  		var keyword = { q: word };
-      // keep searchTerm in state
+  function searchTwitter(word, limitTweetAmount) {
       state.searchTerm = word;
-      var limitTweetAmount = $('#limitTweeterItems').val();
-      console.log(limitTweetAmount);
       if(limitTweetAmount > 0) {
         state.tweetLimit = limitTweetAmount;
       } else {
         // set default tweetLimit
         state.tweetLimit = 10;
       }
-      console.log("Keyword: ", keyword);
-      console.log(word);
-  		$('.tweet-list').removeClass('hidden');
+      $('.tweet-list').removeClass('hidden');
       $('.tools').removeClass('hidden');
+}
+
+// create a place for the data to be held
+  var state = {
+    searchTerm: '',
+    language: 'en',
+    tweetLimit: '10',
+    tweetText: ''
+  };
+
+  /** EVENT LISTENERS**/
+
+  // watch for click on submit button
+  $('.js-submit-search').on('click', function(event) {
+      event.preventDefault();
+      var word = $('#twitter-keyword-entry').val();
+      var keyword = { q: word };
+      var limitTweetAmount = $('#limitTweeterItems').val();
+  		searchTwitter(word, limitTweetAmount);
   		getDataFromTwitter(keyword, displayTweetData);
   });
 
@@ -105,19 +106,8 @@ function tweeterList() {
       event.preventDefault();
       var word = $('#twitter-keyword-entry').val();
       var keyword = { q: word };
-      // keep searchTerm in state
-      state.searchTerm = word;
       var limitTweetAmount = $('#limitTweeterItems').val();
-      console.log(limitTweetAmount);
-      if(limitTweetAmount > 0) {
-        state.tweetLimit = limitTweetAmount;
-      } else {
-        // set default tweetLimit
-        state.tweetLimit = 10;
-      }
-      console.log("Keyword: ", keyword);
-      console.log(word);
-      $('.tweet-list').removeClass('hidden');
+      searchTwitter(word, limitTweetAmount);
       getDataFromTwitter(keyword, displayTweetData);
     }
   });
@@ -132,9 +122,9 @@ function tweeterList() {
   });
 
   $('.translate-me').click(function() {
-    var text = $('.original-text').text();
+    var text = $('.tweetText:first').text();
+    console.log(text);
     var language = state.language;
-    console.log("This is in translate me: " + language);
     getDataFromYandex(text, language, displayYandexData);
   });
 

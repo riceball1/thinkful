@@ -39,8 +39,8 @@ h1 {
 }
 
 .bubble {
-	width: 200px;
-	height: 200px;
+	width: 10%;
+	height: 10%;
 	position: fixed;
 	right: 0;
 	bottom: 0;
@@ -70,19 +70,14 @@ input[type="number"] {
 	text-align: center;
 }
 
-button {
-	border-radius: 10px;
-	border: 0;
-	font-size: 1.5em;
-	background-color: #E63663;
-}
 
 /** TWEET LIST **/
 
 .tweet-list {
 	border: 1px solid #95A5A6;
-	width: 60%;
+	width: 80%;
 	height: 500px;
+	margin: 10px auto;
 	overflow: auto;
 	border-radius: 5px;
 }
@@ -92,6 +87,15 @@ button {
 	padding: 5px;
 	border: 1px solid #95A5A6;
 	background-color: #FFF;
+}
+
+.translate-me {
+	font-size: 16px;
+	border: none;
+	background-color: #E63663;
+	color: white;
+	padding: 16px;
+	cursor: pointer;
 }
 
 /* DROPDOWN MENU */
