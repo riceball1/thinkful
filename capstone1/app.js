@@ -33,7 +33,7 @@ function tweeterList() {
         var tweetText = individualTweets.text;
         var language = individualTweets.metadata.iso_language_code;
         resultElement += '<div class="individual-tweets"' + 'data-lang="' + language + '" data-index="' + i +'">'
-        + '<div class="authorInfo"><img src="' + avatar + '" class="avatar">' + '<span class="authorName">'+ author +'</span>' + '<span class="authorHandle">@' + username+ '</div>' + '<div class="tweetContent"><p class="tweetText">'+ tweetText + '</p><span class="timestamp">' + timestamp +'<i class="fa fa-twitter" aria-hidden="true"></i></div></div>';
+        + '<div class="authorInfo"><img src="' + avatar + '" class="avatar">' + '<span class="authorName">'+ author +' </span>' + '<span class="authorHandle">@' + username+ ' </span></div>' + '<div class="tweetContent"><p class="tweetText">'+ tweetText + '</p><span class="timestamp">' + timestamp +'<i class="fa fa-twitter" aria-hidden="true"></i></div></div>';
       }
     }
     $('.individual-tweets-list').html(resultElement);
