@@ -62,10 +62,12 @@ function tweeterList() {
   }
 
   function displayYandexData(data) {
-    var tweetResponse = data.text[0];  //translated text. 
-    state.tweetText = tweetResponse;
-    console.log(tweetResponse);
-    $('.tweetText:first').html(state.tweetText);
+    for(var i = 0; i < tweetLimit; i++) {
+      var tweetResponse = data.text[0];  //translated text. 
+      state.originalTweetText = tweetResponse;
+      console.log(tweetResponse);
+      $('.tweetText:first').html(state.tweetText);
+    }
   }
 
   function searchTwitter(word, limitTweetAmount) {
@@ -85,7 +87,7 @@ function tweeterList() {
     searchTerm: '',
     language: 'en',
     tweetLimit: '10',
-    tweetText: ''
+    originalTweetText: ''
   };
 
   /** EVENT LISTENERS**/
@@ -122,10 +124,17 @@ function tweeterList() {
   });
 
   $('.translate-me').click(function() {
+    state.language = '';
     var text = $('.tweetText:first').text();
-    console.log(text);
     var language = state.language;
     getDataFromYandex(text, language, displayYandexData);
+  });
+
+  // add modal feature to selected tweet
+  $('.individual-tweets-list').on('click', '.individual-tweets', function() {
+    $(this).toggleClass('modal-content');
+    // $('#fade').css('display', 'block');
+    // $(this).attr('contentEditable', true);
   });
 
 }
