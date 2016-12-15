@@ -33,14 +33,14 @@ function tweeterList() {
         var tweetText = individualTweets.text;
         var language = individualTweets.metadata.iso_language_code;
         resultElement += '<div class="individual-tweets"' + 'data-lang="' + language + '" data-index="' + i +'">'
-        + '<div class="authorInfo"><img src="' + avatar + '" class="avatar">' + '<span class="authorName">'+ author +' </span>' + '<span class="authorHandle">@' + username+ ' </span></div>' + '<div class="tweetContent"><p class="tweetText">'+ tweetText + '</p><span class="timestamp">' + timestamp +'<a href="https://twitter.com/intent/tweet?text='+tweetText+'" class="twitter-share-button">Tweet</a></div></div>';
+        + '<div class="authorInfo"><img src="' + avatar + '" class="avatar">' + '<span class="authorName">'+ author +' </span>' + '<span class="authorHandle">@' + username+ ' </span></div>' + '<div class="tweetContent"><p class="tweetText">'+ tweetText + '</p><span class="timestamp">' + timestamp +'<a href="https://twitter.com/intent/tweet?text='+tweetText+'" class="twitter-share-button">Tweet</a><a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false">Tweet</a></div></div>';
       }
     }
     $('.individual-tweets-list').html(resultElement);
   }
 
   function getDataFromYandex(text, language, callback) {
-    console.log(text);
+    state.originalTweetText = text;
     $.ajax({
       url: YANDEX_TRANSLATE_URL,
       dataType: 'json',
@@ -64,10 +64,9 @@ function tweeterList() {
 
   function displayYandexData(data) {
     // for(var i = 0; i < tweetLimit; i++) {
-      var tweetResponse = data.text[0];  //translated text. 
-      state.originalTweetText = tweetResponse;
-      console.log(tweetResponse);
-      $('.tweetText:first').html(state.tweetText);
+      var tweetResponse = data.text[0];  //translated text
+      state.translatedTweet = tweetResponse; 
+      $('.tweetText:first').html(tweetResponse);
     // }
   }
 
@@ -88,7 +87,8 @@ function tweeterList() {
     searchTerm: '',
     language: 'en',
     tweetLimit: '10',
-    originalTweetText: ''
+    originalTweetText: '',
+    translatedTweet: ''
   };
 
   /** EVENT LISTENERS**/
@@ -120,12 +120,10 @@ function tweeterList() {
       var lang = $(this).val();
       var langName = $(this).text();
       state.language = lang;
-      console.log(state.language);
       $('.language-choice').html(langName);
   });
 
   $('.translate-me').click(function() {
-    state.language = '';
     var text = $('.tweetText:first').text();
     var language = state.language;
     getDataFromYandex(text, language, displayYandexData);
