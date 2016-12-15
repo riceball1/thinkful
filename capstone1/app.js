@@ -40,6 +40,7 @@ function tweeterList() {
   }
 
   function getDataFromYandex(text, language, callback) {
+    console.log(text);
     $.ajax({
       url: YANDEX_TRANSLATE_URL,
       dataType: 'json',
@@ -62,12 +63,12 @@ function tweeterList() {
   }
 
   function displayYandexData(data) {
-    for(var i = 0; i < tweetLimit; i++) {
+    // for(var i = 0; i < tweetLimit; i++) {
       var tweetResponse = data.text[0];  //translated text. 
       state.originalTweetText = tweetResponse;
       console.log(tweetResponse);
       $('.tweetText:first').html(state.tweetText);
-    }
+    // }
   }
 
   function searchTwitter(word, limitTweetAmount) {
