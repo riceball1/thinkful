@@ -50,9 +50,10 @@ function tweeterList() {
         var username = userInfo.screen_name;
         var avatar = userInfo.profile_image_url;
         var timestamp = userInfo.created_at;
+        var tweetLink = individualTweets.id_str;
 
         resultElement += '<div class="individual-tweets"' + 'data-lang="' + language + '" data-index="' + i +'">'
-        + '<div class="authorInfo"><img src="' + avatar + '" class="avatar">' + '<span class="authorName">'+ author +' </span>' + '<span class="authorHandle">@' + username+ ' </span></div>' + '<div class="tweetContent"><p class="tweetText">'+ tweetText + '</p><span class="timestamp">' + timestamp + '<span class="js-toggle-languages"> toggle translation </span><a href="https://twitter.com/intent/tweet?text='+tweetText+'" class="twitter-share-button"> Tweet</a></div></div>';
+        + '<div class="authorInfo"><img src="' + avatar + '" class="avatar">' + '<span class="authorName">'+ author +' </span>' + '<span class="authorHandle">@' + username+ ' </span></div>' + '<div class="tweetContent"><p class="tweetText">'+ tweetText + '</p><span class="timestamp">' + timestamp + '<a href=" " class="js-toggle-languages"> Toggle Original/Translated Language </a> | <a href="https://twitter.com/intent/tweet?text='+tweetText+'" class="twitter-share-button"> Tweet </a>'+ ' | <a href="https://www.twitter.com/statuses/'+ tweetLink +'" target="_blank"> View on Twitter </a>' +'</div></div>';
       }
     }
     $('.individual-tweets-list').html(resultElement);
