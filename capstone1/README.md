@@ -21,11 +21,11 @@ Users are able to query twitter with a keyword and return results based on a lim
 
 #User Flow
 Here is an image of the user flow about how users may interact with the app.
-[[http://www.danafng.com/thinkful/capstone1/images/capstone1-v2-userflow.png]]
+![](http://www.danafng.com/thinkful/capstone1/images/capstone1-v2-userflow.png?raw=true)
 
 #Wireframes
 Here is an image of the wireframes for the app.
-[[http://www.danafng.com/thinkful/capstone1/images/wireframe.png]]
+![](http://www.danafng.com/thinkful/capstone1/images/wireframe.png?raw=true)
 
 #Screenshots
 Here are samples of the pieces of application.
