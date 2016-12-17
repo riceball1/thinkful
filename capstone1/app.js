@@ -52,7 +52,7 @@ function tweeterList() {
         var timestamp = userInfo.created_at;
 
         resultElement += '<div class="individual-tweets"' + 'data-lang="' + language + '" data-index="' + i +'">'
-        + '<div class="authorInfo"><img src="' + avatar + '" class="avatar">' + '<span class="authorName">'+ author +' </span>' + '<span class="authorHandle">@' + username+ ' </span></div>' + '<div class="tweetContent"><p class="tweetText">'+ tweetText + '</p><span class="timestamp">' + timestamp +'<a href="https://twitter.com/intent/tweet?text='+tweetText+'" class="twitter-share-button">Tweet</a></div></div>';
+        + '<div class="authorInfo"><img src="' + avatar + '" class="avatar">' + '<span class="authorName">'+ author +' </span>' + '<span class="authorHandle">@' + username+ ' </span></div>' + '<div class="tweetContent"><p class="tweetText">'+ tweetText + '</p><span class="timestamp">' + timestamp + '<span class="js-toggle-languages"> toggle translation </span><a href="https://twitter.com/intent/tweet?text='+tweetText+'" class="twitter-share-button"> Tweet</a></div></div>';
       }
     }
     $('.individual-tweets-list').html(resultElement);

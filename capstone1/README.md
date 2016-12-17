@@ -20,10 +20,16 @@ Users are able to query twitter with a keyword and return results based on a lim
 + Yandex Translate API
 
 #User Flow
-Here is an example of how the users may interact with the app.
+Here is an image of the user flow about how users may interact with the app.
+[[http://www.danafng.com/thinkful/capstone1/images/capstone1-v2-userflow.png]]
+
+#Wireframes
+Here is an image of the wireframes for the app.
+[[http://www.danafng.com/thinkful/capstone1/images/wireframe.png]]
 
 #Screenshots
 Here are samples of the pieces of application.
+
 
 
 # Resources
