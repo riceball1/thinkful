@@ -1,6 +1,6 @@
-// *{
-// 	box-sizing: border-box;
-// }
+* {
+	box-sizing: border-box;
+}
 
 /* colors:
 	#E63663 - bright coral
@@ -13,6 +13,12 @@ html, body {
 }
 a:link, a {
 	color: #E63663;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 12px;
+}
+a:hover {
+	color: #000;
 }
 body {
 	font-family: 'Roboto', sans-serif;
@@ -79,10 +85,37 @@ input[type="number"] {
 	border-radius: 5px;
 }
 .individual-tweets {
-	margin: 10px;
-	padding: 5px;
+	margin: 5px;
+	padding: 10px;
 	border: 1px solid #95A5A6;
+	border-radius: 2px;
 	background-color: #FFF;
+}
+img.avatar {
+	display: inline-block;
+	border-radius: 5px;
+	padding: 3px;
+	width: 60px;
+	height: 60px;
+	margin-right: 5px;
+}
+span.authorName, span.authorHandle {
+	position: relative;
+	top: -5px;
+}
+span.authorName {
+	font-size: 1.3em;
+	font-weight: bold;
+}
+span.authorHandle {
+	color: #95A5A6;
+}
+.timestamp {
+	color: #95A5A6;
+	font-size: 12px;
+}
+.action {
+	margin-right: 10px;
 }
 
 /* DROPDOWN MENU */
