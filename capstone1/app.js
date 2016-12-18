@@ -41,10 +41,12 @@ function tweeterList() {
       } else {
     for(var i = 0; i < state.tweetLimit; i++) {
         var individualTweets = data.statuses[i];
-        var tweetText = individualTweets.text;
+        var tweetTextNormal = individualTweets.text;
+        var tweetTextEdited = tweetTextNormal.replace(/#/gi, '%23');
+        tweetTextEdited = tweetTextEdited.replace(/\s/gi, '+');
         var language = individualTweets.metadata.iso_language_code;
         var userInfo = individualTweets.user;
-        state.tweetsArray.push(tweetText);
+        state.tweetsArray.push(tweetTextNormal);
 
         var author = userInfo.name;
         var username = userInfo.screen_name;
@@ -52,8 +54,9 @@ function tweeterList() {
         var timestamp = userInfo.created_at;
         var tweetLink = individualTweets.id_str;
 
+
         resultElement += '<div class="individual-tweets"' + 'data-lang="' + language + '" data-index="' + i +'">'
-        + '<div class="authorInfo"><img src="' + avatar + '" class="avatar">' + '<span class="authorName">'+ author +' </span>' + '<span class="authorHandle">@' + username+ ' </span></div>' + '<div class="tweetContent"><p class="tweetText">'+ tweetText + '</p><a class="js-toggle-languages action"> Toggle Original/Translated Language </a> <a href="https://twitter.com/intent/tweet?text='+tweetText+'" class="twitter-share-button action"> Tweet </a>'+ '  <a href="https://www.twitter.com/statuses/'+ tweetLink +'" target="_blank" class="action"> View on Twitter </a>' +'<p class="timestamp">' + timestamp + '</p></div></div>';
+        + '<div class="authorInfo"><img src="' + avatar + '" class="avatar">' + '<span class="authorName">'+ author +' </span>' + '<span class="authorHandle">@' + username+ ' </span></div>' + '<div class="tweetContent"><p class="tweetText">'+ tweetTextNormal + '</p><a href="#" class="js-toggle-languages action"> Toggle Original/Translated Language </a>'+ '  <a href="https://www.twitter.com/statuses/'+ tweetLink +'" target="_blank" class="action"> View on Twitter </a>'+ '<a href="https://twitter.com/intent/tweet?text='+tweetTextEdited+'" class="twitter-share-button"> Tweet </a>' +'<p class="timestamp">' + timestamp + '</p></div></div>';
       }
     }
     $('.individual-tweets-list').html(resultElement);
@@ -120,7 +123,14 @@ function tweeterList() {
   // toggle original/translated language
   $('.js-toggle-languages').on('click', function(event){
     event.preventDefault();
-    toggleLanguages(data);
+    // toggleLanguages(data);
+    // get the original language
+    var originalLanguage = $('.individual-tweets').data('lang');
+    console.log(originalLanguage);
+    // toggle back and forth the language (
+    // original language is saved in tweetsArray in state
+    // replace tweetText when tweeting out/ and in tweet-content area
+    // make Yandex call for current language choice
   });
 }
 
