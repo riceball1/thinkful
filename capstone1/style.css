@@ -10,6 +10,7 @@
 
 html, body {
 	min-height: 100%;
+	color: #000;
 }
 a:link, a {
 	color: #E63663;
@@ -48,7 +49,7 @@ h1 {
 }
 .bubble {
 	width: 10%;
-	height: 10%;
+	height: auto;
 	position: fixed;
 	right: 0;
 	bottom: 0;
@@ -147,7 +148,9 @@ span.authorHandle {
     display: block;
 }
 /* Change color of dropdown links on hover */
-.dropdown-content option:hover {background-color: #f1f1f1}
+.dropdown-content option:hover {
+	background-color: #f1f1f1;
+}
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
     display: block;
