@@ -3,7 +3,8 @@
 var state = {
   searchTerm: '',
   tweetLimit: '10',
-  tweetsArray: []
+  tweetsArray: [],
+  translatedTweetArray: []
 };
 
 function tweeterList() {
@@ -86,6 +87,7 @@ function tweeterList() {
 // displayYandexData and assign translated text to the tweetText
   function displayYandexData(data, index) {
       var tweetResponse = data.text[0];  //translated text
+      state.translatedTweetArray[index] = tweetResponse;
       $('.tweetText:eq('+index+')').html(tweetResponse);
   }
 
