@@ -4,7 +4,7 @@ var state = {
   searchTerm: '',
   tweetLimit: '10',
   tweetsArray: [],
-  translatedTweetArray: []
+  translatedTweetsArray: []
 };
 
 function tweeterList() {
@@ -43,8 +43,7 @@ function tweeterList() {
     for(var i = 0; i < state.tweetLimit; i++) {
         var individualTweets = data.statuses[i];
         var tweetTextNormal = individualTweets.text;
-        var tweetTextEdited = tweetTextNormal.replace(/#/gi, '%23');
-        tweetTextEdited = tweetTextEdited.replace(/\s/gi, '+');
+        var tweetTextEdited = encodeURIComponent(tweetTextNormal);
         var language = individualTweets.metadata.iso_language_code;
         var userInfo = individualTweets.user;
         state.tweetsArray.push(tweetTextNormal);
@@ -87,7 +86,7 @@ function tweeterList() {
 // displayYandexData and assign translated text to the tweetText
   function displayYandexData(data, index) {
       var tweetResponse = data.text[0];  //translated text
-      state.translatedTweetArray[index] = tweetResponse;
+      state.translatedTweetsArray[index] = tweetResponse;
       $('.tweetText:eq('+index+')').html(tweetResponse);
   }
 
@@ -119,9 +118,17 @@ function tweeterList() {
       }
   });
   // toggle between translation and original text
-  $('.individual-tweets').on('click', 'a', function(event){
-    event.preventDefault();
-    console.log($(event.currentTarget));
+  $('.individual-tweets-list').on('click', '.js-toggle-languages',
+    function(event){
+      event.preventDefault();
+      var index = $(this).parent().parent().attr('data-index');
+      var currentTweetText = $(this).parent().find('.tweetText').text();
+
+      if(state.tweetsArray[index] != currentTweetText) {
+        $('.tweetText:eq('+index+')').text(state.tweetsArray[index]);
+      } else {
+        $('.tweetText:eq('+index+')').text(state.translatedTweetsArray[index]);
+      }
   });
 
 }
