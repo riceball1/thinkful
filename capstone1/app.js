@@ -43,7 +43,7 @@ function tweeterList() {
     for(var i = 0; i < state.tweetLimit; i++) {
         var individualTweets = data.statuses[i];
         var tweetTextNormal = individualTweets.text;
-        var tweetTextEdited = encodeURIComponent(tweetTextNormal);
+        // var tweetTextEdited = encodeURIComponent(tweetTextNormal);
         var language = individualTweets.metadata.iso_language_code;
         var userInfo = individualTweets.user;
         state.tweetsArray.push(tweetTextNormal);
@@ -56,7 +56,7 @@ function tweeterList() {
 
 
         resultElement += '<div class="individual-tweets"' + 'data-lang="' + language + '" data-index="' + i +'">'
-        + '<div class="authorInfo"><img src="' + avatar + '" class="avatar">' + '<span class="authorName">'+ author +' </span>' + '<span class="authorHandle">@' + username+ ' </span></div>' + '<div class="tweetContent"><p class="tweetText">'+ tweetTextNormal + '</p><a href="#" class="js-toggle-languages action"> Toggle Original/Translated Language </a>'+ '  <a href="https://www.twitter.com/statuses/'+ tweetLink +'" target="_blank" class="action"> View on Twitter </a>'+ '<a href="https://twitter.com/intent/tweet?text='+tweetTextEdited+'" class="twitter-share-button"> Tweet </a>' +'<p class="timestamp">' + timestamp + '</p></div></div>';
+        + '<div class="authorInfo"><img src="' + avatar + '" class="avatar">' + '<span class="authorName">'+ author +' </span>' + '<span class="authorHandle">@' + username+ ' </span></div>' + '<div class="tweetContent"><p class="tweetText">'+ tweetTextNormal + '</p><a href="#" class="js-toggle-languages action"> Toggle Original/Translated Language </a>'+ '  <a href="https://www.twitter.com/statuses/'+ tweetLink +'" target="_blank" class="action"> View on Twitter </a>'+ '<a class="twitter-share-button"> Tweet </a>' +'<p class="timestamp">' + timestamp + '</p></div></div>';
       }
     }
     $('.individual-tweets-list').html(resultElement);
@@ -123,12 +123,20 @@ function tweeterList() {
       event.preventDefault();
       var index = $(this).parent().parent().attr('data-index');
       var currentTweetText = $(this).parent().find('.tweetText').text();
-
       if(state.tweetsArray[index] != currentTweetText) {
         $('.tweetText:eq('+index+')').text(state.tweetsArray[index]);
       } else {
         $('.tweetText:eq('+index+')').text(state.translatedTweetsArray[index]);
       }
+  });
+
+  $('.individual-tweets-list').on('click', '.twitter-share-button', function(event){
+    event.preventDefault();
+    var currentTweetText = $(this).parent().find('.tweetText').text();
+    var encodedTweetText = encodeURIComponent(currentTweetText);
+    var twitterURL = "https://twitter.com/intent/tweet?text=" + encodedTweetText;
+    var hrefAttribute = $(this).attr('href', twitterURL );
+    console.log(hrefAttribute);
   });
 
 }
