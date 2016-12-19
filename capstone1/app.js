@@ -83,7 +83,7 @@ function tweeterList() {
       }
     });
   }
-
+// displayYandexData and assign translated text to the tweetText
   function displayYandexData(data, index) {
       var tweetResponse = data.text[0];  //translated text
       $('.tweetText:eq('+index+')').html(tweetResponse);
@@ -116,22 +116,12 @@ function tweeterList() {
         getDataFromYandex(text, language, i);
       }
   });
-  function toggleLanguages(data){
-    console.log("Hello");
-    console.log(data);
-  }
-  // toggle original/translated language
-  $('.js-toggle-languages').on('click', function(event){
+  // toggle between translation and original text
+  $('.individual-tweets').on('click', 'a', function(event){
     event.preventDefault();
-    // toggleLanguages(data);
-    // get the original language
-    var originalLanguage = $('.individual-tweets').data('lang');
-    console.log(originalLanguage);
-    // toggle back and forth the language (
-    // original language is saved in tweetsArray in state
-    // replace tweetText when tweeting out/ and in tweet-content area
-    // make Yandex call for current language choice
+    console.log($(event.currentTarget));
   });
+
 }
 
 $(document).ready(tweeterList);
