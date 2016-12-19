@@ -14,6 +14,7 @@ function tweeterList() {
   function searchTwitter() {
     state.searchTerm = $('#twitter-keyword-entry').val();;
     state.tweetLimit = $('#limitTweeterItems').val();
+    $('.language-choice').css('display', 'none');
     $('.tweet-list').removeClass('hidden');
     $('.tools').removeClass('hidden');
   }
@@ -45,12 +46,13 @@ function tweeterList() {
         var author = userInfo.name;
         var username = userInfo.screen_name;
         var avatar = userInfo.profile_image_url;
-        var timestamp = userInfo.created_at;
+        var time = userInfo.created_at;
+        var timestamp = time.replace(time.slice(16,25), '');
         var tweetLink = individualTweets.id_str;
 
 
         resultElement += '<div class="individual-tweets"' + 'data-lang="' + language + '" data-index="' + i +'">'
-        + '<div class="authorInfo"><img src="' + avatar + '" class="avatar">' + '<span class="authorName">'+ author +' </span>' + '<span class="authorHandle">@' + username+ ' </span></div>' + '<div class="tweetContent"><p class="tweetText">'+ tweetTextNormal + '</p><a href="#" class="js-toggle-languages action"> Toggle Original/Translated Language </a>'+ '  <a href="https://www.twitter.com/statuses/'+ tweetLink +'" target="_blank" class="action"> View on Twitter </a>'+ '<a class="twitter-share-button"> Tweet </a>' +'<p class="timestamp">' + timestamp + '</p></div></div>';
+        + '<div class="authorInfo"><img src="' + avatar + '" class="avatar">' + '<span class="authorName">'+ author +' </span>' + '<span class="authorHandle">@' + username+ ' </span>' + '<span class="timestamp">' + timestamp + '</span></div>' + '<div class="tweetContent"><p class="tweetText">'+ tweetTextNormal + '</p><a href="#" class="js-toggle-languages action"> Toggle Original/Translated Language </a>'+ '  <a href="https://www.twitter.com/statuses/'+ tweetLink +'" target="_blank" class="action"> View on Twitter </a>'+ '<a class="twitter-share-button"> Tweet </a></div></div>';
       }
     }
     $('.individual-tweets-list').html(resultElement);

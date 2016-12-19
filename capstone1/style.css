@@ -5,7 +5,8 @@
 /* colors:
 	#E63663 - bright coral
 	#03A9F4 - bright blue
-	#95A5A6 - darkgrayish
+	#95A5A6 - grayish
+	#494F4F - darkgray
 */
 
 html, body {
@@ -13,7 +14,7 @@ html, body {
 	color: #000;
 }
 a:link, a {
-	color: #E63663;
+	color: #03A9F4 ;
 	text-decoration: none;
 	font-weight: bold;
 	font-size: 12px;
@@ -101,7 +102,7 @@ input[type="number"] {
 .tweet-list {
 	border: 1px solid #95A5A6;
 	width: 80%;
-	height: 500px;
+	height: 70%;
 	margin: 10px auto;
 	overflow: auto;
 	border-radius: 5px;
@@ -121,7 +122,7 @@ img.avatar {
 	height: 60px;
 	margin-right: 5px;
 }
-span.authorName, span.authorHandle {
+span.authorName, span.authorHandle, span.timestamp {
 	position: relative;
 	top: -5px;
 }
@@ -130,11 +131,12 @@ span.authorName {
 	font-weight: bold;
 }
 span.authorHandle {
-	color: #95A5A6;
+	color: #494F4F;
 }
 .timestamp {
-	color: #95A5A6;
+	color: #494F4F;
 	font-size: 12px;
+	margin-left: 10px;
 }
 .action {
 	margin-right: 10px;
