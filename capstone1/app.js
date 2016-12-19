@@ -2,7 +2,7 @@
 
 var state = {
   searchTerm: '',
-  tweetLimit: '10',
+  tweetLimit: 1,
   tweetsArray: [],
   translatedTweetsArray: []
 };
@@ -14,12 +14,6 @@ function tweeterList() {
   function searchTwitter() {
     state.searchTerm = $('#twitter-keyword-entry').val();;
     state.tweetLimit = $('#limitTweeterItems').val();
-    if(state.tweetLimit > 0) {
-      state.tweetLimit = tweetLimit;
-    } else {
-      // set default tweetLimit
-      state.tweetLimit = 3;
-    }
     $('.tweet-list').removeClass('hidden');
     $('.tools').removeClass('hidden');
   }
@@ -110,7 +104,7 @@ function tweeterList() {
   $('.dropdown-content').on('click', 'option', function(event) {
       var language = $(this).val();
       var languageName = $(this).text();
-      $('.language-choice').css('display', 'inline-block');
+      $('.language-choice').css('display', 'block');
       $('.language-choice').html(languageName);
       for(var i= 0; i < state.tweetLimit; i++) {
         var text = state.tweetsArray[i];

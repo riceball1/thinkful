@@ -14,21 +14,22 @@
 <body>
 <header>
 	<h1>Multilingual Tweeter</h1>
-	<p class="subtitle">Tweet in the Language of Your Choice.</p>
+	<p class="subtitle">Tweet in the Language of Your Choice</p>
 </header>
 <div class="overlay"></div>
 <main class="container">
 	<section class="search-form">
 	<form id="js-twitter-form">
-      <input type="text" name="twitter-keyword-entry" id="twitter-keyword-entry" placeholder="type #keyword here" required>
-      <input type="number" name="limitTweeterItems" id="limitTweeterItems" placeholder="# of tweets" min="1">
-      <button class="js-submit-search" type="btn">submit</button>
+      <input type="text" name="twitter-keyword-entry" id="twitter-keyword-entry" placeholder="search twitter here" required>
+			<img src="images/magnifer.png" class="search-glass">
+      <input type="number" name="limitTweeterItems" id="limitTweeterItems" placeholder="# of tweets" min="1" value="3">
+      <button class="js-submit-search submit-button" type="btn">submit</button>
     </form>
 	</section>
 	<section class="tools hidden">
 		<div class="language-choice"></div>
 		<div class="dropdown">
-			<button class="dropbtn">Translate Options</button>
+			<button class="dropbtn">translate tweets</button>
 		  	<div class="dropdown-content">
 			    <option value="es">Spanish</option>
 			    <option value="ru">Russian</option>
