@@ -129,7 +129,7 @@ function tweeterList() {
         $('.tweetText:eq('+index+')').text(state.translatedTweetsArray[index]);
       }
   });
-
+// tweet out correct current tweet text
   $('.individual-tweets-list').on('click', '.twitter-share-button', function(event){
     event.preventDefault();
     var currentTweetText = $(this).parent().find('.tweetText').text();
@@ -138,7 +138,9 @@ function tweeterList() {
     var hrefAttribute = $(this).attr('href', twitterURL );
     console.log(hrefAttribute);
   });
-
 }
 
 $(document).ready(tweeterList);
+
+// translation option showing present language should clear when changing query
+// display the number of tweets
