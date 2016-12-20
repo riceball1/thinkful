@@ -32,7 +32,6 @@ function tweeterList() {
 
   function displayTweetData(data) {
     var resultElement = '';
-    console.log(data.statuses[0]);
     if(data.statuses.length == 0) {
         resultElement += "<p>Search did not find anything.</p>";
       } else {
@@ -138,6 +137,3 @@ function tweeterList() {
 }
 
 $(document).ready(tweeterList);
-
-// translation option showing present language should clear when changing query
-// display the number of tweets
