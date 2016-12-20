@@ -9,6 +9,7 @@ Users are able to query twitter with a keyword and return results based on a lim
 
 ##Demo Page
 ###http://www.danafng.com/thinkful/capstone1/
+## Gomix Demo: https://picayune-basement.gomix.me
 
 ##Technologies Used
 
@@ -32,6 +33,7 @@ Here are samples of the pieces of application.
 
 + Landing Page: ![](http://www.danafng.com/thinkful/capstone1/images/01-landing-page.png?raw=true)
 + Search Results: ![](http://www.danafng.com/thinkful/capstone1/images/02-search-results.png?raw=true)
++ Translation Dropdown: ![](http://www.danafng.com/thinkful/capstone1/images/03-translation-dropdown.png?raw=true)
 + Translate Results: ![](http://www.danafng.com/thinkful/capstone1/images/03-translate-results.png?raw=true)
 + Toggle Translation: ![](http://www.danafng.com/thinkful/capstone1/images/04-toggle-translation.png?raw=true)
 + Share Tweet: ![](http://www.danafng.com/thinkful/capstone1/images/05-share-tweet.png?raw=true)
