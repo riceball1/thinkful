@@ -78,6 +78,7 @@ h1 {
 	background-color: #E63663;
 	color: #FFF;
 	font-weight: bold;
+	cursor: pointer;
 }
 .submit-button:hover {
 	color: #95A5A6;
@@ -221,7 +222,6 @@ span.authorHandle {
 	}
 	.submit-button {
 		font-size: 16px;
-		cursor: pointer;
 	}
 }
 
