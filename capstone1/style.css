@@ -78,12 +78,11 @@ h1 {
 	background-color: #E63663;
 	color: #FFF;
 	font-weight: bold;
-	cursor: pointer;
 }
 .submit-button:hover {
 	color: #95A5A6;
 }
-input[type="text"] {
+input[type="text"], #limitTweeterItems {
 	padding: 10px;
 	border-radius: 10px;
 	border: 2px solid #E63663;
@@ -91,12 +90,9 @@ input[type="text"] {
 	font-size: 30px;
 }
 #limitTweeterItems {
-	padding: 10px;
-	border-radius: 10px;
-	border: 2px solid #E63663;
 	width: 10%;
 	font-size: 30px;
-	text-align: center;
+	padding: 10px;
 }
 
 /** TWEET LIST **/
@@ -217,16 +213,17 @@ span.authorHandle {
 
 /** MEDIA QUERIES **/
 @media (max-width: 900px) {
-	input[type="text"], input[type="number"] {
+	input[type="text"], #limitTweeterItems {
 		font-size: 16px;
 	}
 	.submit-button {
 		font-size: 16px;
+		cursor: pointer;
 	}
 }
 
 @media (max-width: 600px) {
-	input[type="text"], input[type="number"] {
+	input[type="text"], #limitTweeterItems {
 		font-size: 14px;
 	}
 	.submit-button {
