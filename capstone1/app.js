@@ -32,6 +32,7 @@ function tweeterList() {
 
   function displayTweetData(data) {
     var resultElement = '';
+    console.log(data.statuses[0]);
     if(data.statuses.length == 0) {
         resultElement += "<p>Search did not find anything.</p>";
       } else {
@@ -52,7 +53,7 @@ function tweeterList() {
 
 
         resultElement += '<div class="individual-tweets"' + 'data-lang="' + language + '" data-index="' + i +'">'
-        + '<div class="authorInfo"><img src="' + avatar + '" class="avatar">' + '<span class="authorName">'+ author +' </span>' + '<span class="authorHandle">@' + username+ ' </span>' + '<span class="timestamp">' + timestamp + '</span></div>' + '<div class="tweetContent"><p class="tweetText">'+ tweetTextNormal + '</p><a href="#" class="js-toggle-languages action"> Toggle Original/Translated Language </a>'+ '  <a href="https://www.twitter.com/statuses/'+ tweetLink +'" target="_blank" class="action"> View on Twitter </a>'+ '<a class="twitter-share-button"> Tweet </a></div></div>';
+        + '<div class="authorInfo"><a href="http://www.twitter.com/'+username+'"><img src="' + avatar + '" class="avatar"></a>' + '<a href="http://www.twitter.com/'+username+'"><span class="authorName">'+ author +' </span>' + '<span class="authorHandle">@' + username+ ' </span></a>' + '<span class="timestamp">' + timestamp + '</span></div>' + '<div class="tweetContent"><p class="tweetText">'+ tweetTextNormal + '</p><a href="#" class="js-toggle-languages action"> Toggle Original/Translated Language </a>'+ '  <a href="https://www.twitter.com/statuses/'+ tweetLink +'" target="_blank" class="action"> View on Twitter </a>'+ '<a class="twitter-share-button"> Tweet </a></div></div>';
       }
     }
     $('.individual-tweets-list').html(resultElement);
