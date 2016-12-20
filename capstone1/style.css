@@ -113,6 +113,7 @@ input[type="text"] {
 	border: 1px solid #95A5A6;
 	border-radius: 2px;
 	background-color: #FFF;
+	z-index: -100;
 }
 img.avatar {
 	display: inline-block;
@@ -194,9 +195,8 @@ span.authorHandle {
 	background-color: white;
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
-.translate-arrow {
-	width: 30px;
-	height: auto;
+.twitter-share-button {
+	cursor: pointer;
 }
 .sr-only {
   position: absolute;
