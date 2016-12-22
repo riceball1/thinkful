@@ -1,0 +1,47 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #ddd;
+  font-family: Arial, sans-serif;
+}
+
+.board {
+  width: 500px;
+  height: 500px;
+  border: 2px solid black;
+  margin: 10px auto;
+  background-color: #fff;
+  position: relative;
+}
+
+header {
+  margin: 10px auto;
+  text-align: center;
+}
+
+.start {
+  background-color: red;
+  font-size: 20px;
+  display: block;
+  margin: 0 auto;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.start:hover {
+  color: white;
+}
+
+.square {
+  border: 5px solid black;
+  margin: 0px;
+  width: 160px;
+  height: 160px;
+  display: inline-block;
+  font-size: 60px;
+  font-weight: bold;
+  text-align: center;
+}
