@@ -9,11 +9,18 @@ body {
 
 .board {
   width: 500px;
-  height: 500px;
-  border: 2px solid black;
+  height: auto;
   margin: 10px auto;
-  background-color: #fff;
+  padding: 5px;
   position: relative;
+}
+
+.clearfix:after {
+   content: ".";
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
 }
 
 header {
@@ -21,7 +28,7 @@ header {
   text-align: center;
 }
 
-.start {
+.start, .reset {
   background-color: red;
   font-size: 20px;
   display: block;
@@ -36,12 +43,32 @@ header {
 }
 
 .square {
-  border: 5px solid black;
+  border: 2px solid black;
   margin: 0px;
+  line-height: 160px;
   width: 160px;
   height: 160px;
-  display: inline-block;
+  display: block;
+  float: left;
   font-size: 60px;
   font-weight: bold;
   text-align: center;
+  background-color: #fff;
+}
+
+.turn-display {
+  background-color: lightblue;
+  border: 2px solid black;
+  font-size: 30px;
+  margin: 5px auto;
+  padding: 10px;
+  height: auto;
+  width: 475px;
+  text-align: center;
+  font-weight: bold;
+}
+
+
+.hidden {
+  display: none;
 }
