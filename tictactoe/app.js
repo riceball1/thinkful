@@ -148,18 +148,12 @@ $('.board').on('click', '.square', function(event){
   state.counter++;
   updateBoardState(event);
   checkBoard(state);
-  //onClick.
-  // if(counter==9)// css declare tie, end game/reset button (modal)
-  // if(checkBoard(board) { // css declare winner|tie, end game}
-
   if(state.counter == 9) {
-    console.log("Game Tied!");
+    $('.turn-display').text('Game Tied!');
     setTimeout(function() { resetGame(state, event)}, 2000);
   } else if (checkBoard(state)){
-    // disable clicks for the board
-    console.log("There's a winner!");
-    setTimeout(function() {resetGame(state, event)}, 2000);
+    var currentPlayer = $(event.currentTarget).text();
+    $('.turn-display').text('The winner is '+ currentPlayer);
+    setTimeout(function() {resetGame(state, event);}, 2000);
   }
-
-
 });
