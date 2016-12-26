@@ -1,12 +1,12 @@
 /** GLOBAL **/
 var state = {
-  count: 1,
   counter: 0,
   boardState: [
-    ["1","2","3"],
-    ["4","5","6"],
-    ["7","8","9"]
-  ]
+    [" "," "," "],
+    [" "," "," "],
+    [" "," "," "]
+  ],
+  gameStatus: "started"
 }
 
 /** FUNCTIONS **/
@@ -22,23 +22,21 @@ function setupBoard(){
 }
 
 function markBoard(state, event) {
-  event.preventDefault();
   var self = $(event.currentTarget);
   var index = $(self).attr("data-index");
   var currentSquare = $(self);
   var empty = currentSquare.text() == '';
   var turnDisplay = $('.turn-display');
 
-  // odd number
-  if(empty && state.count % 2 == 0) {
-    currentSquare.text('O');
-    turnDisplay.text("It's X's turn.");
-  // even number
-  } else if (empty && (Math.abs(state.count % 2 == 1))) {
-    currentSquare.text('X');
-    turnDisplay.text("It's O's turn.");
+  if(empty) {
+      if(state.counter % 2 !== 0) { // odd number
+      currentSquare.text('O');
+      turnDisplay.text("It's X's turn.");
+    } else { // even number
+      currentSquare.text('X');
+      turnDisplay.text("It's O's turn.");
+    }
   }
-  state.count++;
 }
 
 function setupDisplays() {
@@ -59,10 +57,7 @@ function checkDiagonal(board){
 }
 
 function checkHorizontal(board) {
-  // var times=0;
   for(var i = 0; i < 3; i++){
-    // times++;
-    // console.log(`ran ${times}`);
     if(board[i][0]== board[i][1] && board[i][1] == board[i][2] && board[i][0] != ' ') {
       return true;
     }
@@ -89,11 +84,12 @@ function resetGame(state, event){
   $('.start').removeClass('hidden');
   $('.board').addClass('hidden');
   state.counter = 0;
-  state.count = 1;
-  state.boardState[0] = ['1', '2', '3'];
-  state.boardState[1] = ['4', '5', '6'];
-  state.boardState[2] = ['7', '8', '9'];
-}
+  state.gameStatus = "started";
+  state.boardState = [
+      [" "," "," "],
+      [" "," "," "],
+      [" "," "," "]
+    ];
 
 function updateBoardState(event) {
   event.preventDefault();
@@ -102,34 +98,14 @@ function updateBoardState(event) {
   var parent = self.parent();
   var className = parent[0].className;
   var value = self.text();
-  var array1 = state["boardState"][0];
-  var array2 = state["boardState"][1];
-  var array3 = state["boardState"][2];
 
   if(className === 'line-one') {
-    if(index == "0"){
-      array1[index] = value;
-    } else if (index == "1") {
-      array1[index] = value;
-    } else if (index == "2") {
-      array1[index] = value;
+    state.boardState[0][index] = value;
     }
   } else if (className === 'line-two') {
-    if(index == "0"){
-      array2[index] = value;
-    } else if (index == "1") {
-      array2[index] = value;
-    } else if (index == "2") {
-      array2[index] = value;
-    }
+    state.boardState[1][index] = value;
   } else if (className === 'line-three') {
-    if(index == "0"){
-      array3[index] = value;
-    } else if (index == "1") {
-      array3[index] = value;
-    } else if (index == "2") {
-      array3[index] = value;
-    }
+    state.boardState[2][index] = value;
   }
 }
 /** EVENT LISTENER **/
@@ -140,22 +116,28 @@ $('.start').on('click', function(event){
 });
 
 $('.reset').on('click', function(event){
+  event.preventDefault();
   resetGame(state, event);
 });
 
 $('.board').on('click', '.square', function(event){
-  markBoard(state, event);
-  state.counter++;
-  updateBoardState(event);
-  var checkState = checkBoard(state);
-  if(state.counter == 9 && !checkState) {
-    $('.turn-display').text('Game Tied!');
-    setTimeout(function() { resetGame(state, event)}, 2000);
-  }
+  event.preventDefault();
+  if(state.gameStatus != "ended") {
+    markBoard(state, event);
+    state.counter++;
+    updateBoardState(event);
+    var checkState = checkBoard(state);
+    if(state.counter == 9 && !checkState) {
+      $('.turn-display').text('Game Tied!');
+      state.gameStatus = "ended";
+      setTimeout(function() { resetGame(state, event)}, 2000);
+    }
 
-  if (checkState){
-    var currentPlayer = $(event.currentTarget).text();
-    $('.turn-display').text('The winner is '+ currentPlayer);
-    setTimeout(function() {resetGame(state, event);}, 2000);
+    if (checkState){
+      var currentPlayer = $(event.currentTarget).text();
+      $('.turn-display').text('The winner is '+ currentPlayer);
+      state.gameStatus = "ended";
+      setTimeout(function() {resetGame(state, event);}, 2000);
+    }
   }
 });
