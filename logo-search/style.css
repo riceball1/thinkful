@@ -1,0 +1,36 @@
+header {
+  font-family: cursive, fantasy;
+  color: red;
+  margin: 20px auto;
+  text-align: center;
+}
+
+select {
+  display: inline-block;
+  margin: 10px auto;
+}
+
+.selection {
+  background-color: #ddd;
+  margin: 20px auto;
+  padding: 10px;
+  width: 600px;
+  height: 300px;
+}
+
+.select-options {
+  margin: 20px auto;
+  padding: 30px;
+}
+
+.search-button {
+  font-size: 12px;
+  color: white;
+  background-color: red;
+  text-align: center;
+  margin: 30px auto;
+  display: block;
+  border: none;
+  width: 100px;
+  height: 30px;
+}
