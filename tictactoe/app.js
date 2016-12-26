@@ -147,11 +147,13 @@ $('.board').on('click', '.square', function(event){
   markBoard(state, event);
   state.counter++;
   updateBoardState(event);
-  checkBoard(state);
-  if(state.counter == 9) {
+  var checkState = checkBoard(state);
+  if(state.counter == 9 && !checkState) {
     $('.turn-display').text('Game Tied!');
     setTimeout(function() { resetGame(state, event)}, 2000);
-  } else if (checkBoard(state)){
+  }
+
+  if (checkState){
     var currentPlayer = $(event.currentTarget).text();
     $('.turn-display').text('The winner is '+ currentPlayer);
     setTimeout(function() {resetGame(state, event);}, 2000);

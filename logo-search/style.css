@@ -5,7 +5,7 @@ header {
   text-align: center;
 }
 
-select {
+.select-field {
   display: inline-block;
   margin: 10px auto;
 }
@@ -33,4 +33,13 @@ select {
   border: none;
   width: 100px;
   height: 30px;
+}
+
+.logos {
+  margin: 20px auto;
+  text-align: center;
+}
+
+.logo-image {
+  padding: 30px;
 }
