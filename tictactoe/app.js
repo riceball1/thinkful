@@ -90,6 +90,7 @@ function resetGame(state, event){
       [" "," "," "],
       [" "," "," "]
     ];
+}
 
 function updateBoardState(event) {
   event.preventDefault();
@@ -101,7 +102,6 @@ function updateBoardState(event) {
 
   if(className === 'line-one') {
     state.boardState[0][index] = value;
-    }
   } else if (className === 'line-two') {
     state.boardState[1][index] = value;
   } else if (className === 'line-three') {
