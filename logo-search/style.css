@@ -5,34 +5,30 @@ header {
   text-align: center;
 }
 
-.select-field {
-  display: inline-block;
-  margin: 10px auto;
-}
-
 .selection {
   background-color: #ddd;
   margin: 20px auto;
   padding: 10px;
-  width: 600px;
+  width: 700px;
   height: 300px;
 }
 
 .select-options {
-  margin: 20px auto;
-  padding: 30px;
+  margin: 50px 0px;
+  padding: 20px;
+  text-align: center;
 }
 
 .search-button {
-  font-size: 12px;
+  font-size: 16px;
   color: white;
   background-color: red;
   text-align: center;
   margin: 30px auto;
   display: block;
   border: none;
-  width: 100px;
-  height: 30px;
+  width: 200px;
+  padding: 10px;
 }
 
 .logos {
@@ -42,4 +38,59 @@ header {
 
 .logo-image {
   padding: 30px;
+}
+
+/* DROPDOWN MENU */
+.dropbtn {
+    background-color: white;
+    color: #ddd;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+		width: 300px;
+}
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 300px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+/* Links inside the dropdown */
+.dropdown-content option {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-family: Arial, sans-serif;
+}
+/* Change color of dropdown links on hover */
+.dropdown-content option:hover {
+	background-color: #f1f1f1;
+	color: #03A9F4;
+	cursor: pointer;
+}
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: white;
+}
+
+.caret {
+  margin-left: 20px;
+  color: black;
+}
+
+.grayscale {
+  -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
 }
