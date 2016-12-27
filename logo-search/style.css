@@ -1,6 +1,6 @@
 header {
   font-family: cursive, fantasy;
-  color: red;
+  color: darkred;
   margin: 20px auto;
   text-align: center;
 }
@@ -22,7 +22,7 @@ header {
 .search-button {
   font-size: 16px;
   color: white;
-  background-color: red;
+  background-color: darkred;
   text-align: center;
   margin: 30px auto;
   display: block;
@@ -64,7 +64,7 @@ header {
 }
 /* Links inside the dropdown */
 .dropdown-content option {
-    color: black;
+    color: darkred;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -73,7 +73,7 @@ header {
 /* Change color of dropdown links on hover */
 .dropdown-content option:hover {
 	background-color: #f1f1f1;
-	color: #03A9F4;
+	color: red;
 	cursor: pointer;
 }
 /* Show the dropdown menu on hover */

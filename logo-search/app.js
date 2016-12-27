@@ -81,6 +81,9 @@ function searchLogos(){
   $('.search-button').on('click', function(event){
     event.preventDefault();
     filterLogos();
+    // reset the buttons to original text
+    $('.education').text("EDUCATION LEVEL");
+    $('.program').text("PROGRAM TYPES");
   });
 
   // set up logos list
