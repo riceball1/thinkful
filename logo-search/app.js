@@ -3,21 +3,21 @@
 var logoList = [
   { // 0
     education: 'k-12',
-    program: 'loan',
+    program: 'none',
     src: 'images/aci-color.png'
   },
   { // 1
     education: 'high school',
-    program: 'scholarship',
+    program: 'none',
     src: 'images/acm-color.png'
   },
   { // 2
-    education: 'k-12',
+    education: 'none',
     program: 'scholarship',
     src: 'images/afe-color.png'
   },
   { // 3
-    education: 'k-12',
+    education: 'none',
     program: 'loan',
     src: 'images/aci-color.png'
   },
@@ -52,10 +52,12 @@ var logoList = [
 function searchLogos(){
   function displaySearchItem(event){
     var currentItem = $(event.currentTarget)
+    var currentValue = $(currentItem).val();
     var selection = $(currentItem).text();
     var parentBtn = $(currentItem).parent().parent();
     var selectBtn = $(parentBtn)[0].childNodes[1];
     $(selectBtn).text(selection);
+    $(selectBtn).attr('value', currentValue);
   }
 
   function displayLogos(){
@@ -68,19 +70,26 @@ function searchLogos(){
   }
 
   function filterLogos(){
-    var education = $('.education').text();
-    var program = $('.program').text();
+    var education = $('.education').val().toLowerCase();
+    var program = $('.program').val().toLowerCase();
     var programType = $('.logo-image').attr('data-program');
     var educationLevel = $('.logo-image').data('education');
-    if(education !== 'EDUCATION LEVEL' || program !== 'PROGRAM TYPES') {
-      $('.logo-image').addClass('grayscale');
-      var targetProgramLogos = $('[data-program="'+ program.toLowerCase() +'"]');
-      var targetEducationLogos = $('[data-education="'+ education.toLowerCase() +'"]');
-      targetEducationLogos.removeClass('grayscale');
+    $('.logo-image').addClass('grayscale');
+    console.log(education);
+    console.log(program);
+    if(program === 'loan' || program === 'scholarship') {
+      var targetProgramLogos = $('[data-program="'+ program +'"]');
       targetProgramLogos.removeClass('grayscale');
-    } else {
-      $('.logo-image').removeClass('grayscale');
     }
+
+    if(education === 'k-12' || education === 'high school') {
+      var targetEducationLogos = $('[data-education="'+ education +'"]');
+      targetEducationLogos.removeClass('grayscale');
+    }
+
+
+
+
   }
 
   /** EVENT LISTENERS **/
