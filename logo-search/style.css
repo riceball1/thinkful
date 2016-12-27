@@ -85,11 +85,6 @@ header {
     background-color: white;
 }
 
-.caret {
-  margin-left: 20px;
-  color: black;
-}
-
 .grayscale {
   -webkit-filter: grayscale(100%);
     filter: grayscale(100%);
