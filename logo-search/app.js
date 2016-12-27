@@ -5,25 +5,25 @@ var logoList = [
     education: 'k-12',
     program: '',
     id: 0,
-    src: 'assets/aci-color.png'
+    src: 'images/aci-color.png'
   },
   { // 1
     education: 'high school',
     program: '',
     id: 1,
-    src: 'assets/acm-color.png'
+    src: 'images/acm-color.png'
   },
   { // 2
     education: '',
     program: 'scholarship',
     id: 2,
-    src: 'assets/afe-color.png'
+    src: 'images/afe-color.png'
   },
   { // 3
     education: '',
     program: 'loan',
     id: 3,
-    src: '/aci-color.png'
+    src: 'images/aci-color.png'
   },
   { // 4
     education: 'high school',
@@ -64,7 +64,8 @@ function searchLogos(){
     var currentValue = $(currentItem).val();
     var selection = $(currentItem).text();
     var parentBtn = $(currentItem).parent().parent();
-    var selectBtn = $(parentBtn)[1].childNodes[1];
+    var selectBtn = $(parentBtn)[0].childNodes[3];
+    console.log(selectBtn);
     $(selectBtn).text(selection);
     $(selectBtn).attr('value', currentValue);
   }
