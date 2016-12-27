@@ -65,7 +65,6 @@ function searchLogos(){
     var selection = $(currentItem).text();
     var parentBtn = $(currentItem).parent().parent();
     var selectBtn = $(parentBtn)[0].childNodes[3];
-    console.log(selectBtn);
     $(selectBtn).text(selection);
     $(selectBtn).attr('value', currentValue);
   }
