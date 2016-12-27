@@ -3,47 +3,56 @@
 var logoList = [
   { // 0
     education: 'k-12',
-    program: 'none',
-    src: 'images/aci-color.png'
+    program: '',
+    id: 0,
+    src: 'assets/aci-color.png'
   },
   { // 1
     education: 'high school',
-    program: 'none',
-    src: 'images/acm-color.png'
+    program: '',
+    id: 1,
+    src: 'assets/acm-color.png'
   },
   { // 2
-    education: 'none',
+    education: '',
     program: 'scholarship',
-    src: 'images/afe-color.png'
+    id: 2,
+    src: 'assets/afe-color.png'
   },
   { // 3
-    education: 'none',
+    education: '',
     program: 'loan',
-    src: 'images/aci-color.png'
+    id: 3,
+    src: '/aci-color.png'
   },
   { // 4
     education: 'high school',
     program: 'scholarship',
+    id: 4,
     src: 'images/acm-color.png'
   },
   { // 5
     education: 'k-12',
     program: 'scholarship',
+    id: 5,
     src: 'images/afe-color.png'
   },
   { // 6
     education: 'k-12',
     program: 'loan',
+    id: 6,
     src: 'images/aci-color.png'
   },
   { // 7
     education: 'high school',
-    program: 'scholarship',
+    program: 'loan',
+    id: 7,
     src: 'images/acm-color.png'
   },
   { // 8
     education: 'k-12',
     program: 'scholarship',
+    id: 8,
     src: 'images/afe-color.png'
   }
 ]
@@ -51,11 +60,11 @@ var logoList = [
 
 function searchLogos(){
   function displaySearchItem(event){
-    var currentItem = $(event.currentTarget)
+    var currentItem = $(event.currentTarget);
     var currentValue = $(currentItem).val();
     var selection = $(currentItem).text();
     var parentBtn = $(currentItem).parent().parent();
-    var selectBtn = $(parentBtn)[0].childNodes[1];
+    var selectBtn = $(parentBtn)[1].childNodes[1];
     $(selectBtn).text(selection);
     $(selectBtn).attr('value', currentValue);
   }
@@ -64,7 +73,8 @@ function searchLogos(){
     var logos = '';
     // var grayscale = logoList.match ?
     for(var i = 0; i < logoList.length; i++) {
-      logos += '<img src="'+logoList[i].src+'" class="logo-image grayscale" data-program="'+ logoList[i].program +'" data-education="'+ logoList[i].education +'">';
+      logos += '<img src="'+logoList[i].src+'" class="logo-image grayscale" data-id="'+
+      logoList[i].id +'">';
     }
     $('.logos').html(logos);
   }
@@ -72,24 +82,26 @@ function searchLogos(){
   function filterLogos(){
     var education = $('.education').val().toLowerCase();
     var program = $('.program').val().toLowerCase();
-    var programType = $('.logo-image').attr('data-program');
-    var educationLevel = $('.logo-image').data('education');
-    $('.logo-image').addClass('grayscale');
-    console.log(education);
-    console.log(program);
-    if(program === 'loan' || program === 'scholarship') {
-      var targetProgramLogos = $('[data-program="'+ program +'"]');
-      targetProgramLogos.removeClass('grayscale');
+    var results = logoList;
+    if(education !== 'search all' || education == '') {
+      results = results.filter(function(logo){
+        return logo.education == education
+      });
     }
-
-    if(education === 'k-12' || education === 'high school') {
-      var targetEducationLogos = $('[data-education="'+ education +'"]');
-      targetEducationLogos.removeClass('grayscale');
+    if(program !== 'search all' || program == '' ) {
+      results = results.filter(function(logo){
+        return logo.program == program
+      });
     }
+    colorLogos(results)
+  }
 
-
-
-
+  function colorLogos(coloredLogosArray){
+      $('.logo-image').addClass('grayscale');
+      for(var i = 0; i < coloredLogosArray.length; i++){
+        var targetLogos = $('[data-id="'+ coloredLogosArray[i].id +'"]');
+        targetLogos.removeClass('grayscale');
+      }
   }
 
   /** EVENT LISTENERS **/
@@ -101,13 +113,8 @@ function searchLogos(){
   $('.search-button').on('click', function(event){
     event.preventDefault();
     filterLogos();
-    // reset the buttons to original text
-    $('.education').text("EDUCATION LEVEL");
-    $('.program').text("PROGRAM TYPES");
   });
-
-  // set up logos list
-  displayLogos();
+  displayLogos();   // set up logos list
 }
 
 $(document).ready(searchLogos);
