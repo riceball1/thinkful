@@ -52,7 +52,7 @@ var logoList = [
 function searchLogos(){
   function displaySearchItem(event){
     var currentItem = $(event.currentTarget)
-    var selection = $(currentItem).val();
+    var selection = $(currentItem).text();
     var parentBtn = $(currentItem).parent().parent();
     var selectBtn = $(parentBtn)[0].childNodes[1];
     $(selectBtn).text(selection);
@@ -60,6 +60,7 @@ function searchLogos(){
 
   function displayLogos(){
     var logos = '';
+    // var grayscale = logoList.match ?
     for(var i = 0; i < logoList.length; i++) {
       logos += '<img src="'+logoList[i].src+'" class="logo-image grayscale" data-program="'+ logoList[i].program +'" data-education="'+ logoList[i].education +'">';
     }
@@ -69,7 +70,17 @@ function searchLogos(){
   function filterLogos(){
     var education = $('.education').text();
     var program = $('.program').text();
-    console.log(education, program);
+    var programType = $('.logo-image').attr('data-program');
+    var educationLevel = $('.logo-image').data('education');
+    if(education !== 'EDUCATION LEVEL' || program !== 'PROGRAM TYPES') {
+      $('.logo-image').addClass('grayscale');
+      var targetProgramLogos = $('[data-program="'+ program.toLowerCase() +'"]');
+      var targetEducationLogos = $('[data-education="'+ education.toLowerCase() +'"]');
+      targetEducationLogos.removeClass('grayscale');
+      targetProgramLogos.removeClass('grayscale');
+    } else {
+      $('.logo-image').removeClass('grayscale');
+    }
   }
 
   /** EVENT LISTENERS **/
