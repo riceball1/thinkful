@@ -11,6 +11,7 @@ const {BlogPosts} = require('./models');
 // so there's some data to look at
 BlogPosts.create('About Me', 'I\'m an aspriing full stack web developer.', 'Dana');
 BlogPosts.create('Living near Silicon Valley', 'Life in Silicon Valley is pretty much the same as life in most big cities, but with the exception that Google and Facebook are right next door.', 'Dana');
+BlogPosts.create('Bonjour le Monde', 'I love to travel the world and eat every kind of food.', 'Dana');
 
 
 // when the root of this router is called with GET, return
@@ -19,14 +20,13 @@ router.get('/', (req, res) => {
   res.json(BlogPosts.get());
 });
 
-
 // when a new shopping list item is posted, make sure it's
 // got required fields ('name' and 'checked'). if not,
 // log an error and return a 400 status code. if okay,
 // add new item to BlogPosts and return it with a 201.
 router.post('/', jsonParser, (req, res) => {
   // ensure `name` and `budget` are in request body
-  const requiredFields = ['name', 'content', 'author'];
+  const requiredFields = ['title', 'content', 'author'];
   for (let i=0; i<requiredFields.length; i++) {
     const field = requiredFields[i];
     if (!(field in req.body)) {
@@ -35,7 +35,7 @@ router.post('/', jsonParser, (req, res) => {
       return res.status(400).send(message);
     }
   }
-  const item = BlogPosts.create(req.body.name, req.body.content, req.body.author, req.body.publishDate);
+  const item = BlogPosts.create(req.body.title, req.body.content, req.body.author, req.body.publishDate);
   res.status(201).json(item);
 });
 
@@ -54,7 +54,7 @@ router.delete('/:id', (req, res) => {
 // of that, log error and send back status code 400. otherwise
 // call `BlogPosts.update` with updated item.
 router.put('/:id', jsonParser, (req, res) => {
-  const requiredFields = ['name', 'content', 'author', 'id'];
+  const requiredFields = ['title', 'content', 'author', 'id'];
   for (let i=0; i<requiredFields.length; i++) {
     const field = requiredFields[i];
     if (!(field in req.body)) {
@@ -73,10 +73,12 @@ router.put('/:id', jsonParser, (req, res) => {
   console.log(`Updating blog posts \`${req.params.id}\``);
   const updatedItem = BlogPosts.update({
     id: req.params.id,
-    name: req.body.name,
+    title: req.body.title,
     content: req.body.content,
     author: req.body.author,
     publishDate: req.body.publishDate || Date.now()
   });
   res.status(204).json(updatedItem);
 })
+
+module.exports = router;
