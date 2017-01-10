@@ -1,0 +1,17 @@
+{
+  "name": "blog-api",
+  "version": "1.0.0",
+  "description": "\"Build a CRUD api for a blogging platform\"",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "morgan": "^1.7.0",
+    "uuid": "^3.0.1"
+  }
+}
