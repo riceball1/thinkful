@@ -1,7 +1,7 @@
 
 // non-recursive
 // assume that array is of integer values, and target is integer value
-function binarySearch(array, target) {
+function binaryStringSearch(array, target) {
     // can add check here for checking if array and target are integer values
     let start = 0;
     let end = array.length - 1;
@@ -29,13 +29,13 @@ function binarySearch(array, target) {
 // test case
 // assumption that array is sorted
 // else sort method
-const sample = [2, 4, 5, 6, 8, 10]; // even array 6 integers
-const sample2 = [2, 4, 5, 6, 8] // odd size array 5 integers
+const sample = ['apple', 'bear', 'cat']; // even array 6 integers
+const sample2 = ['ape', 'apple', 'bear', 'cat', 'cats', 'tree'] // odd size array 5 integers
 let test = {
-    test1: binarySearch(sample, 10),
-    test2: binarySearch(sample2, 5),
-    test3: binarySearch(sample2, 16),
-    test4: binarySearch(sample, 16)
+    test1: binaryStringSearch(sample, 'apple'),
+    test2: binaryStringSearch(sample2, 'cat'),
+    test3: binaryStringSearch(sample2, 'monkey'),
+    test4: binaryStringSearch(sample2, 'Cats')
 };
 
 console.log(test);
